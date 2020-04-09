@@ -11,10 +11,14 @@ public:
     HomePage(QWidget *parent,QString name);
     ~HomePage();
 
+
 public slots:
     void launch_test();
     void setA(double a);
     void setB(double b);
+    void setTargetNumber(int n);
+    void setTargetSizeMini(int m);
+    void setTargetSizeMax(int m);
 
 signals:
     void changeInterface(QString name);

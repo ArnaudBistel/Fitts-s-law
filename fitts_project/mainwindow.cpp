@@ -16,6 +16,19 @@ MainWindow::MainWindow()
     setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
 }
 
+
+FittsTestWindow& MainWindow::getFittsTestWindow()
+{
+    return *fitts_page;
+}
+
+
+//void MainWindow::setA(double a)
+//{
+//    fitts_page->setA(a);
+//}
+
+
 MainWindow::~MainWindow()
 {
 }
@@ -43,4 +56,17 @@ void MainWindow::changeOnglet(QString name)
     {
         QMessageBox::information(0,tr("Erreur changement onglet"),tr("Impossible de changer l'interface pour l'onglet ")+name+tr(".\nCet onglet n'existe plus ou n'a pas été créer."));
     }
+
+//    for (int i = 0; i < this->count (); ++i)
+//    {
+//        // determine the vertical size policy
+//        QSizePolicy::Policy policy = QSizePolicy::Ignored;
+//        if (i == this->currentIndex ())
+//            policy = QSizePolicy::Expanding;
+
+//        // update the size policy
+//        QWidget* pPage = this->widget (i);
+//        pPage->setSizePolicy (policy, policy);
+//    }
+
 }

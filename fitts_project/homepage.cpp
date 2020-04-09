@@ -1,4 +1,5 @@
 #include "homepage.h"
+#include "mainwindow.h"
 
 HomePage::HomePage(QWidget *parent, QString name):
     QWidget(parent)
@@ -47,7 +48,7 @@ HomePage::HomePage(QWidget *parent, QString name):
     a_spinbox->setMaximum(1);
     a_spinbox->setMinimum(0);
     a_spinbox->setSingleStep(0.05);
-//    connect(a_spinbox, SIGNAL(valueChanged(double d)), this, SLOT(setA(double)));
+    connect(a_spinbox, SIGNAL(valueChanged(double)), this, SLOT(setA(double)));
     a_b_form_layout->addRow("a", a_spinbox);
 
     b_spinbox = new QDoubleSpinBox(this);
@@ -56,7 +57,7 @@ HomePage::HomePage(QWidget *parent, QString name):
     b_spinbox->setMaximum(1);
     b_spinbox->setMinimum(0);
     b_spinbox->setSingleStep(0.05);
-//    connect(b_spinbox, SIGNAL(valueChanged(double d)), this, SLOT(setB(double)));
+    connect(b_spinbox, SIGNAL(valueChanged(double)), this, SLOT(setB(double)));
     a_b_form_layout->addRow("b", b_spinbox);
 
     a_b_choice_layout->addLayout(a_b_form_layout);
@@ -74,16 +75,19 @@ HomePage::HomePage(QWidget *parent, QString name):
     target_number_spinbox = new QSpinBox;
     target_number_spinbox->setValue(10);
     target_number_spinbox->setRange(10,20);
+    connect(target_number_spinbox, SIGNAL(valueChanged(int)), this, SLOT(setTargetNumber(int)));
     configuration_form->addRow("Nombre de cibles", target_number_spinbox);
 
     target_mini_size_spinbox = new QSpinBox;
     target_mini_size_spinbox->setValue(10);
     target_mini_size_spinbox->setRange(10,100);
+    connect(target_mini_size_spinbox, SIGNAL(valueChanged(int)), this, SLOT(setTargetSizeMini(int)));
     configuration_form->addRow("Taille minimum des cibles", target_mini_size_spinbox);
 
     target_max_size_spinbox = new QSpinBox;
     target_max_size_spinbox->setValue(150);
-    target_max_size_spinbox->setRange(150,250);
+    target_max_size_spinbox->setRange(150,300);
+    connect(target_max_size_spinbox, SIGNAL(valueChanged(int)), this, SLOT(setTargetSizeMax(int)));
     configuration_form->addRow("Taille maximum des cibles", target_max_size_spinbox);
 
     configuration_box->setLayout(configuration_form);
@@ -116,19 +120,39 @@ HomePage::HomePage(QWidget *parent, QString name):
 
 void HomePage::setA(double a)
 {
-
+    static_cast<MainWindow*>(this->parent())->getFittsTestWindow().setA(a);
 }
 
 
 void HomePage::setB(double b)
 {
-
+    static_cast<MainWindow*>(this->parent())->getFittsTestWindow().setB(b);
 }
+
+
+void HomePage::setTargetNumber(int n)
+{
+    static_cast<MainWindow*>(this->parent())->getFittsTestWindow().setTargetNumber(n);
+}
+
+
+void HomePage::setTargetSizeMini(int m)
+{
+    static_cast<MainWindow*>(this->parent())->getFittsTestWindow().setTargetSizeMini(m);
+}
+
+
+void HomePage::setTargetSizeMax(int m)
+{
+    static_cast<MainWindow*>(this->parent())->getFittsTestWindow().setTargetSizeMax(m);
+}
+
 
 
 void HomePage::launch_test()
 {
     emit changeInterface("fitts_page");
+    static_cast<MainWindow*>(this->parent())->getFittsTestWindow().startCountdown();
 }
 
 

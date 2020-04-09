@@ -15,13 +15,13 @@ class MainWindow : public QStackedWidget
 public:
     MainWindow();
     ~MainWindow();
+    FittsTestWindow& getFittsTestWindow();
 
 public slots:
     void changeOnglet(QString name);
-
+//    void setA(double A);
 
 private:
-
     HomePage *home_page;
     FittsTestWindow *fitts_page;
     ResultsPage *results_page;
