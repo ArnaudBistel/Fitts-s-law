@@ -12,7 +12,7 @@ class FittsData
 public :
     FittsData();
     std::vector< std::tuple<int, int, double, double> >  getData();
-    void sendData(QPoint init_position, QPoint target_position, int targetSize, int timeToClick, int targetNumber);
+    void sendData(QPoint init_position, QPoint target_position, int targetSize, double timeToClick, int targetNumber);
 
 private:
     int target_number;

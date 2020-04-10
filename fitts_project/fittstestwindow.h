@@ -4,6 +4,7 @@
 #include <QtWidgets>
 #include "homepage.h"
 #include "FittsData.h"
+#include "resultspage.h"
 
 class FittsTestWindow : public QWidget
 {
@@ -33,6 +34,7 @@ private:
     void setTargetNumber(int n);
     void setTargetSizeMini(int m);
     void setTargetSizeMax(int m);
+
 
     // instructions
     QVBoxLayout *instructions_layout;
@@ -72,10 +74,11 @@ private:
     int target_size_max;
     FittsData *fitts_data;
     QPoint last_recorded_pos;
-
+    FittsData& getFittsData();
 
     friend class MainWindow;
     friend class HomePage;
+    friend class ResultsPage;
 
 };
 

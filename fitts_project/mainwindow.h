@@ -16,6 +16,7 @@ public:
     MainWindow();
     ~MainWindow();
     FittsTestWindow& getFittsTestWindow();
+    ResultsPage& getResultsPage();
 
 public slots:
     void changeOnglet(QString name);

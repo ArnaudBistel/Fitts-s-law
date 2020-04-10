@@ -1,5 +1,6 @@
 #include "fittstestwindow.h"
 #include <iostream>
+#include "mainwindow.h"
 //FittsTestWindow::FittsTestWindow(const FittsTestWindow& fitts)
 //{
 
@@ -167,8 +168,11 @@ void FittsTestWindow::recordData()
 
         // compute distance between last recorded position and target center
         if(click_count >= 0)
-            this->fitts_data->sendData(last_recorded_pos, QPoint(click_me_button->x(), click_me_button->y()), click_me_button->width(), test_timer->restart(), click_count);
-
+        {
+            double time_elapsed = test_timer->restart();
+            cout << "time elapsed : " << time_elapsed << endl ;
+            this->fitts_data->sendData(last_recorded_pos, QPoint(click_me_button->x(), click_me_button->y()), click_me_button->width(), time_elapsed, click_count);
+        }
         last_recorded_pos.setX(current_pos.x());
         last_recorded_pos.setY(current_pos.y());
 }
@@ -246,7 +250,8 @@ void FittsTestWindow::goBack()
 void FittsTestWindow::goToResults()
 {
     emit changeInterface("results_page");
-    this->resetTest();
+    static_cast<MainWindow*>(this->parent())->getResultsPage().displayResults();
+
 }
 
 void FittsTestWindow::setA(double a)
@@ -291,4 +296,9 @@ void FittsTestWindow::setTargetSizeMax(int m)
 
 }
 
+
+FittsData& FittsTestWindow::getFittsData()
+{
+    return *fitts_data;
+}
 

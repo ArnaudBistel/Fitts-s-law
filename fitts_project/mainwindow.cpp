@@ -23,6 +23,13 @@ FittsTestWindow& MainWindow::getFittsTestWindow()
 }
 
 
+
+ResultsPage& MainWindow::getResultsPage()
+{
+    return *results_page;
+}
+
+
 //void MainWindow::setA(double a)
 //{
 //    fitts_page->setA(a);
