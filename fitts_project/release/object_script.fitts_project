@@ -1,0 +1,10 @@
+FittsData.o
+fittstestwindow.o
+homepage.o
+main.o
+mainwindow.o
+resultspage.o
+moc_fittstestwindow.o
+moc_homepage.o
+moc_mainwindow.o
+moc_resultspage.o

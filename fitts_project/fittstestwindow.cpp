@@ -1,19 +1,21 @@
 #include "fittstestwindow.h"
+#include <iostream>
+//FittsTestWindow::FittsTestWindow(const FittsTestWindow& fitts)
+//{
 
-FittsTestWindow::FittsTestWindow(const FittsTestWindow& fitts)
-{
-
-}
+//}
 
 
 FittsTestWindow::FittsTestWindow(QWidget *parent, QString name):
-    QWidget(parent)
+    QWidget(parent) , last_recorded_pos()
 {
     a=0.2;
     b=0.1;
     target_number=10;
     target_size_max = 150;
     target_size_mini = 10;
+    this->fitts_data = new FittsData() ;
+    this->test_timer = new QElapsedTimer;
 
     // set test params
     // first click doesn't count
@@ -52,8 +54,8 @@ FittsTestWindow::FittsTestWindow(QWidget *parent, QString name):
     click_me_button->setGeometry(screen_width, screen_height, 50, 50);
     click_me_button->setEnabled(false);
 
-    connect(click_me_button, SIGNAL(clicked()), this, SLOT(changeButtonPosition()));
     connect(click_me_button, SIGNAL(clicked()), this, SLOT(recordData()));
+    connect(click_me_button, SIGNAL(clicked()), this, SLOT(changeButtonPosition()));
 
     mouse_position_label = new QLabel();
     instructions_layout->addWidget(mouse_position_label);
@@ -144,6 +146,14 @@ void FittsTestWindow::changeButtonPosition()
     click_me_button->setStyleSheet(str);
     //click_me_button->move(x, y);
 
+    if (click_count == 0)
+    {
+        this->test_timer->start();
+        this->fitts_data->setA(this->a);
+        this->fitts_data->setB(this->b);
+        this->fitts_data->setTargetNumber(this->target_number);
+    }
+
     if (click_count >= target_number) {
         this->testFinished();
     }
@@ -152,10 +162,15 @@ void FittsTestWindow::changeButtonPosition()
 
 void FittsTestWindow::recordData()
 {
+        QPoint current_pos = rect->mapFromGlobal(QCursor::pos());
+        mouse_position_label->setText(QString::number(current_pos.x()) + " , " + QString::number(current_pos.y()));
 
-    QPoint pos0 = QCursor::pos();
-    mouse_position_label->setText(QString::number(pos0.x()) + " , " + QString::number(pos0.y()));
+        // compute distance between last recorded position and target center
+        if(click_count >= 0)
+            this->fitts_data->sendData(last_recorded_pos, QPoint(click_me_button->x(), click_me_button->y()), click_me_button->width(), test_timer->restart(), click_count);
 
+        last_recorded_pos.setX(current_pos.x());
+        last_recorded_pos.setY(current_pos.y());
 }
 
 
@@ -165,6 +180,8 @@ void FittsTestWindow::testFinished()
     test_finished_label->setVisible(true);
     click_me_button->setVisible(false);
     results_button->setEnabled(true);
+    this->fitts_data->computeTestResults();
+    this->fitts_data->getData();
 }
 
 
@@ -173,6 +190,8 @@ void FittsTestWindow::resetTest()
     // set test params
     // first click doesn't count
     click_count = -1;
+
+    this->fitts_data->resetData();
 
     results_button->setEnabled(false);
 
