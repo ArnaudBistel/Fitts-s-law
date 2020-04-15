@@ -34,10 +34,10 @@ FittsTestWindow::FittsTestWindow(QWidget *parent, QString name):
     // test view
     rect = new QFrame;
     QRect window = QGuiApplication::screens().first()->geometry();
-    int width = window.width();
-    int height = window.height();
+    int screen_width = window.width();
+    int screen_height = window.height();
 
-    rect->setFixedSize(width * 2/3,height * 2/3);
+    rect->setFixedSize(screen_width * 2/3,screen_height * 2/3);
     rect->setStyleSheet("background-color: rgb(170,189,206); border: 1px solid grey;");
 //    rect->setAlignment(Qt::AlignHCenter);
 
@@ -72,8 +72,8 @@ FittsTestWindow::FittsTestWindow(QWidget *parent, QString name):
 //    click_me_button->setVisible(false);
 
     // Get size of test screen
-    int screen_width = rect->size().width()/2;
-    int screen_height = rect->size().height()/2;
+    int window_width = rect->size().width()/2;
+    int window_height = rect->size().height()/2;
     int click_me_button_width = rect->size().width() / 10 ;
     if (click_me_button_width < 50 ){
         click_me_button_width = 50 ;
@@ -126,6 +126,11 @@ FittsTestWindow::FittsTestWindow(QWidget *parent, QString name):
 //    click_me_button->setGeometry(((rect->width()) / 2) - (click_me_button_width/ 2), ((rect->height() / 2) - (click_me_button_height / 2)), click_me_button_width, click_me_button_height);
 
 
+    beep_file = new QString("H:/UTBM/P20/GL40/TPs/TP2/Fitts-s-law/fitts_project/res/beep.wav");
+    beeeep_file = new QString("H:/UTBM/P20/GL40/TPs/TP2/Fitts-s-law/fitts_project/res/beeeep.wav");
+    beep_sound = new QSound(*beep_file, this);
+    beeeep_sound = new QSound(*beeeep_file, this);
+
 
     // back, reset and results
     bottom_buttons_layout = new QHBoxLayout;
@@ -134,7 +139,7 @@ FittsTestWindow::FittsTestWindow(QWidget *parent, QString name):
     connect(back_to_home_button, SIGNAL(clicked()), this, SLOT(goBack()));
     bottom_buttons_layout->addWidget(back_to_home_button);
 
-    bottom_buttons_layout->insertSpacing(1, width * 1/2);
+    bottom_buttons_layout->insertSpacing(1, screen_width / 3);
 
     // reset button in case the user wants to retry before the test ends
     reset_button = new QPushButton("Recommencer le test");
@@ -173,18 +178,18 @@ void FittsTestWindow::changeButtonPosition()
     int button_height = button_width;
 
     // Get size of screen
-    int screen_width = rect->size().width();
-    int screen_height = rect->size().height();
+    int window_width = rect->size().width();
+    int window_height = rect->size().height();
 
     // Generate random position
     int x_coord = 0;
-    int xTemp = (qrand()%screen_width) - button_width;
-    if(xTemp >= target_size_mini && xTemp < screen_width - target_size_mini)
+    int xTemp = (qrand()%window_width) - button_width;
+    if(xTemp >= target_size_mini && xTemp < window_width - target_size_mini)
         x_coord = xTemp;
 
     int y_coord = 0;
-    int yTemp = (qrand()%screen_height) - button_height;
-    if( yTemp >= target_size_mini && yTemp < screen_height  - target_size_mini)
+    int yTemp = (qrand()%window_height) - button_height;
+    if( yTemp >= target_size_mini && yTemp < window_height  - target_size_mini)
         y_coord = yTemp;
 
     click_me_button->setGeometry(x_coord, y_coord, button_width, button_height);
@@ -205,6 +210,8 @@ void FittsTestWindow::changeButtonPosition()
 
     if (click_count == 0)
     {
+        if (beeeep_sound != NULL )
+            beeeep_sound->stop();
         this->test_timer->start();
         this->fitts_data->setA(this->a);
         this->fitts_data->setB(this->b);
@@ -256,13 +263,22 @@ void FittsTestWindow::resetTest()
 
     results_button->setEnabled(false);
 
-    click_me_button->setText("5");
+    click_me_button->setText("6");
 //    click_me_button->setStyleSheet("background-color: red;");
     click_me_button->setStyleSheet("background-color: rgb(217,72,72); color: white;");
 
+    if( beep_sound != NULL){
+        beep_sound->stop();
+//        beep_sound->play();
+    }
+
+    if (beeeep_sound != NULL ){
+        beeeep_sound->stop();
+
+    }
     // Get size of screen
-    int screen_width = rect->size().width()/2;
-    int screen_height = rect->size().height()/2;
+    int window_width = rect->size().width()/2;
+    int window_height = rect->size().height()/2;
     int click_me_button_width = rect->size().width() / 10 ;
     if (click_me_button_width < 50 ){
         click_me_button_width = 50 ;
@@ -279,7 +295,7 @@ void FittsTestWindow::resetTest()
 
 
 //    countdown_label->setText("5");
-    countdown_timer->stop();
+//    countdown_timer->stop();
     countdown_timer->start(1000);
 
     test_finished_label->setVisible(false);
@@ -294,9 +310,11 @@ void FittsTestWindow::updateCountdown()
     if(countdown > 0)
     {
         click_me_button->setText(QString::number(countdown));
+        beep_sound->play();
     } else if (countdown == 0) {
         click_me_button->setEnabled(true);
         click_me_button->setText("Click me !");
+        beeeep_sound->play();
 //        click_me_button->setText("GO!");
     }
 }
@@ -304,6 +322,7 @@ void FittsTestWindow::updateCountdown()
 
 void FittsTestWindow::startCountdown()
 {
+
     click_me_button->setText("6");
     countdown_timer->start(1000);
 }
@@ -311,13 +330,32 @@ void FittsTestWindow::startCountdown()
 
 void FittsTestWindow::goBack()
 {
-    emit changeInterface("home_page");
     this->resetTest();
+//    if( beep_sound != NULL){
+//        beep_sound->stop();
+//    }
+
+//    if (beeeep_sound != NULL ){
+//        beeeep_sound->stop();
+//    }
+    countdown_timer->stop();
+//    click_me_button->setText("6");
+
+    emit changeInterface("home_page");
 }
 
 
 void FittsTestWindow::goToResults()
 {
+    if( beep_sound != NULL){
+        beep_sound->stop();
+    }
+
+    if (beeeep_sound != NULL ){
+        beeeep_sound->stop();
+    }
+    countdown_timer->stop();
+//        click_me_button->setText("6");
     emit changeInterface("results_page");
     static_cast<MainWindow*>(this->parent())->getResultsPage().displayResults();
 

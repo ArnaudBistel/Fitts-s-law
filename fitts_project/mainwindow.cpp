@@ -4,8 +4,21 @@ MainWindow::MainWindow()
 
 {
 
+
+
     home_page = new HomePage(this, "home_page");
     this->addWidget(static_cast<QWidget*>(home_page));
+
+//    QPalette pal(home_page->palette());
+//    QColor color(170,189,206);
+//    pal.setColor (QPalette::Background, color);
+//    home_page->setAutoFillBackground (true);
+//    home_page->setPalette (pal);
+
+//    home_page->setAttribute(Qt::WA_StyledBackground, true);
+//    home_page->setStyleSheet("background-color: rgb(170,189,206); color: white; ");
+
+
 
     fitts_page = new FittsTestWindow(this, "fitts_page");
     this->addWidget(static_cast<QWidget*>(fitts_page));

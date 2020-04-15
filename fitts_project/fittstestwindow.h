@@ -2,6 +2,7 @@
 #define FITTSTESTWINDOW_H
 
 #include <QtWidgets>
+#include <QSound>
 #include "homepage.h"
 #include "FittsData.h"
 #include "resultspage.h"
@@ -75,6 +76,10 @@ private:
     FittsData *fitts_data;
     QPoint last_recorded_pos;
     FittsData& getFittsData();
+    QString *beep_file;
+    QString *beeeep_file;
+    QSound *beep_sound;
+    QSound *beeeep_sound;
 
     friend class MainWindow;
     friend class HomePage;

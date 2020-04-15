@@ -8,6 +8,8 @@ ResultsPage::ResultsPage(QWidget *parent, QString name):
     this->setObjectName(name);
     connect(this, SIGNAL(changeInterface(QString)), this->parent(), SLOT(changeOnglet(QString)));
 
+    QRect window = QGuiApplication::screens().first()->geometry();
+    int screen_width = window.width();
 
     results_label = new QLabel(this);
     // returns vector of tuple < distance to target, target size, time to click on target, theorical time to click on target >
@@ -18,6 +20,8 @@ ResultsPage::ResultsPage(QWidget *parent, QString name):
     go_home_button = new QPushButton("Accueil", this);
     connect(go_home_button, SIGNAL(clicked()), this, SLOT(goHome()));
     home_and_test_buttons_layout->addWidget(go_home_button);
+
+    home_and_test_buttons_layout->insertSpacing(1, screen_width / 2);
 
     retry_test_button = new QPushButton("Refaire test", this);
     connect(retry_test_button, SIGNAL(clicked()), this, SLOT(retryTest()));
