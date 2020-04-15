@@ -3,6 +3,7 @@
 MainWindow::MainWindow()
 
 {
+
     home_page = new HomePage(this, "home_page");
     this->addWidget(static_cast<QWidget*>(home_page));
 

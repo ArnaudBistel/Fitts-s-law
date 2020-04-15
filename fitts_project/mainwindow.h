@@ -6,7 +6,8 @@
 #include "fittstestwindow.h"
 #include "homepage.h"
 #include "resultspage.h"
-
+#include <QStyle>
+#include <QDesktopWidget>
 
 class MainWindow : public QStackedWidget
 {

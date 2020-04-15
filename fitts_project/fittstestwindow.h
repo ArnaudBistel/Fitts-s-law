@@ -40,13 +40,13 @@ private:
     QVBoxLayout *instructions_layout;
     QHBoxLayout *countdown_layout;
     QLabel *instructions_label;
-    QLabel *countdown_text_label;
-    QLabel *countdown_label;
+//    QLabel *countdown_text_label;
+//    QLabel *countdown_label;
     QTimer *countdown_timer;
 
     // test
-    QLabel *mouse_position_label;
-    QLabel *label;
+//    QLabel *mouse_position_label;
+//    QLabel *label;
 
     // test view
     int x_coord;
@@ -58,7 +58,7 @@ private:
     QElapsedTimer *test_timer;
 
     // back reset and results
-    QHBoxLayout *back_results_layout;
+    QHBoxLayout *bottom_buttons_layout;
     QPushButton *back_to_home_button;
     QPushButton *results_button;
     QPushButton *reset_button;

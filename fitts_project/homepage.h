@@ -42,6 +42,7 @@ private:
     QLabel *a_b_choice_label;
     QDoubleSpinBox *a_spinbox;
     QDoubleSpinBox *b_spinbox;
+    QFormLayout *fitts_form;
 
     // Configuration box
     QGroupBox *configuration_box;
@@ -51,12 +52,15 @@ private:
     QSpinBox *target_max_size_spinbox;
 
     // quit / start buttons
+//    QGridLayout *bottom_layout;
     QHBoxLayout *buttons_layout;
     QPushButton *quit_button;
     QPushButton *start_button;
 
     // main window elements
     QVBoxLayout *vertical_layout;
+    QVBoxLayout *params_layout;
+    QHBoxLayout *horizontal_layout;
 
 };
 

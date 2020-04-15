@@ -13,7 +13,7 @@ HomePage::HomePage(QWidget *parent, QString name):
     // top layout, contains the title of the main window
     // -------------------------------------
     title_label = new QLabel("Programme de test de la formule de Fitts");
-    title_label->setFont(QFont("Comic Sans MS", 20, QFont::Bold, true));
+    title_label->setFont(QFont("Roboto", 20, QFont::Bold, true));
     title_label->setAlignment(Qt::AlignCenter);
 
     title_layout = new QHBoxLayout;
@@ -25,45 +25,59 @@ HomePage::HomePage(QWidget *parent, QString name):
     // -------------------------------------
     fitts_formula_box = new QGroupBox(tr("Loi de Fitts"), this);
 
-    fitts_box_layout = new QHBoxLayout;
-
     fitts_formula_layout = new QVBoxLayout;
-    fitts_formula_label = new QLabel("Formule utilisée : ");
-    fitts_formula_layout->addWidget(fitts_formula_label);
-    fitts_formula = new QLabel("T = a + b.log(D/W + 1)");
-    fitts_formula_layout->addWidget(fitts_formula);
 
-    fitts_box_layout->addLayout(fitts_formula_layout);
+    fitts_form = new QFormLayout;
 
-    // a and b choice for Fitts's formula
-    a_b_choice_layout = new QVBoxLayout;
-
-    a_b_choice_label = new QLabel("Choix de a et b : ");
-    a_b_choice_layout->addWidget(a_b_choice_label);
-
-    a_b_form_layout = new QFormLayout;
-    a_spinbox = new QDoubleSpinBox(this);
+    a_spinbox = new QDoubleSpinBox;
     a_spinbox->setValue(0.2);
     a_spinbox->setDecimals(2);
     a_spinbox->setMaximum(1);
     a_spinbox->setMinimum(0);
     a_spinbox->setSingleStep(0.05);
     connect(a_spinbox, SIGNAL(valueChanged(double)), this, SLOT(setA(double)));
-    a_b_form_layout->addRow("a", a_spinbox);
+    fitts_form->addRow("Choix de a : ", a_spinbox);
 
-    b_spinbox = new QDoubleSpinBox(this);
+    b_spinbox = new QDoubleSpinBox;
     b_spinbox->setValue(0.1);
     b_spinbox->setDecimals(2);
     b_spinbox->setMaximum(1);
     b_spinbox->setMinimum(0);
     b_spinbox->setSingleStep(0.05);
     connect(b_spinbox, SIGNAL(valueChanged(double)), this, SLOT(setB(double)));
-    a_b_form_layout->addRow("b", b_spinbox);
+    fitts_form->addRow("Choix de b : ", b_spinbox);
 
-    a_b_choice_layout->addLayout(a_b_form_layout);
-    fitts_box_layout->addLayout(a_b_choice_layout);
+    fitts_form->setFieldGrowthPolicy(QFormLayout::FieldsStayAtSizeHint);
 
-    fitts_formula_box->setLayout(fitts_box_layout);
+    fitts_formula_layout->addLayout(fitts_form);
+
+
+//    fitts_box_layout = new QHBoxLayout;
+
+    fitts_formula_label = new QLabel("Formule utilisée : ");
+    fitts_formula_layout->addWidget(fitts_formula_label);
+    fitts_formula = new QLabel("T = a + b.log(D/W + 1)");
+    fitts_formula_layout->addWidget(fitts_formula);
+//    fitts_formula_layout->setAlignment(fitts_formula, Qt::AlignHCenter);
+
+//    fitts_box_layout->addLayout(fitts_formula_layout);
+
+    fitts_formula_box->setLayout(fitts_formula_layout);
+
+//    // a and b choice for Fitts's formula
+//    a_b_choice_layout = new QVBoxLayout;
+
+//    a_b_choice_label = new QLabel("Choix de a et b : ");
+//    a_b_choice_layout->addWidget(a_b_choice_label);
+
+//    a_b_form_layout = new QFormLayout;
+//    a_b_form_layout->addRow("a", a_spinbox);
+
+
+//    a_b_choice_layout->addLayout(a_b_form_layout);
+//    fitts_box_layout->addLayout(a_b_choice_layout);
+
+//    fitts_formula_box->setLayout(fitts_box_layout);
 
 
     // -------------------------------------
@@ -90,17 +104,25 @@ HomePage::HomePage(QWidget *parent, QString name):
     connect(target_max_size_spinbox, SIGNAL(valueChanged(int)), this, SLOT(setTargetSizeMax(int)));
     configuration_form->addRow("Taille maximum des cibles", target_max_size_spinbox);
 
-    configuration_box->setLayout(configuration_form);
+    configuration_form->setFieldGrowthPolicy(QFormLayout::FieldsStayAtSizeHint);
 
+    configuration_box->setLayout(configuration_form);
+    configuration_box->setMaximumSize(QSize(450,450));
 
     // -------------------------------------
     // quit / start buttons
     // -------------------------------------
     buttons_layout = new QHBoxLayout;
 
+
     quit_button= new QPushButton("Quitter");
     connect(quit_button, SIGNAL(clicked()), qApp, SLOT(quit()));
     buttons_layout->addWidget(quit_button);
+
+    QRect window = QGuiApplication::screens().first()->geometry();
+    int width = window.width();
+    int height = window.height();
+    buttons_layout->insertSpacing(1, width / 2);
 
     start_button= new QPushButton("Démarrer le test");
     connect(start_button, SIGNAL(clicked()), this, SLOT(launch_test()));
@@ -110,11 +132,29 @@ HomePage::HomePage(QWidget *parent, QString name):
     vertical_layout = new QVBoxLayout();
 
     vertical_layout->addLayout(title_layout);
-    vertical_layout->addWidget(fitts_formula_box);
-    vertical_layout->addWidget(configuration_box);
+    vertical_layout->insertSpacing(1, window.height() * 1/4);
+//    vertical_layout->insertSpacing(1, this->height() * 1/4);
+//    vertical_layout->addWidget(fitts_formula_box);
+//    vertical_layout->addWidget(configuration_box);
+    params_layout = new QVBoxLayout;
+    params_layout->addWidget(fitts_formula_box);
+    params_layout->addWidget(configuration_box);
+
+    vertical_layout->addLayout(params_layout);
+
+    vertical_layout->insertSpacing(3, window.height() * 1/4);
+//    vertical_layout->insertSpacing(3, this->height() * 1/4);
     vertical_layout->addLayout(buttons_layout);
 
-    this->setLayout(vertical_layout);
+    horizontal_layout = new QHBoxLayout;
+    horizontal_layout->insertSpacing(0, height / 4 );
+    horizontal_layout->addLayout(vertical_layout);
+    horizontal_layout->insertSpacing(2, height / 4 );
+//    vertical_layout->setStrechFactor(title_layout,1);
+//    vertical_layout->setStrechFactor(fitts_formula_box,2);
+//    vertical_layout->setStrechFactor(configuration,1);
+
+    this->setLayout(horizontal_layout);
 }
 
 
