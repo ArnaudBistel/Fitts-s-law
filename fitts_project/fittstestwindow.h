@@ -14,6 +14,7 @@ class FittsTestWindow : public QWidget
 public:
     FittsTestWindow(QWidget *parent,QString name);
     void startCountdown();
+        void stopCountdown();
 //    FittsTestWindow(const FittsTestWindow& fitts);
 
 public slots:

@@ -2,6 +2,11 @@
 #define RESULTSPAGE_H
 
 #include <QtWidgets>
+#include <QtCharts>
+#include "FittsData.h"
+#include "homepage.h"
+//#include <QtCharts/QLineSeries>
+using namespace QtCharts;
 
 class ResultsPage : public QWidget
 {
@@ -14,14 +19,18 @@ public slots:
     void retryTest();
     void goHome();
     void displayResults();
-
+    void setA(double a);
+    void setB(double b);
+    void computeFitts();
+    void setTestParams(int number, int min, int max);
 signals:
     void changeInterface(QString name);
 
 private:
     QLabel *results_label;
-
-
+    double a;
+    double b;
+    QChartView *chartView;
     // amin layout
     QVBoxLayout *main_layout;
 
@@ -33,8 +42,30 @@ private:
     QPushButton *go_home_button;
     QPushButton *retry_test_button;
 
+    // Configuration box
+    QGroupBox *configuration_box;
+    QFormLayout *configuration_form;
+    QLabel *target_number_label;
+    QLabel *target_mini_size_label;
+    QLabel *target_max_size_label;
 
+    // Fitts's law formula box
+    QGroupBox *fitts_formula_box;
+    QHBoxLayout *fitts_box_layout;
 
+    QHBoxLayout *fitts_formula_layout;
+    QLabel *fitts_formula_label;
+    QLabel *fitts_formula;
+
+    QVBoxLayout *a_b_choice_layout;
+    QFormLayout *a_b_form_layout;
+    QLabel *a_b_choice_label;
+    QDoubleSpinBox *a_spinbox;
+    QDoubleSpinBox *b_spinbox;
+    QFormLayout *fitts_form;
+    QChart *chart;
+
+    friend class HomePage;
 };
 
 #endif // RESULTSPAGE_H

@@ -37,6 +37,8 @@ private:
 
     friend class FittsTestWindow;
 
+    friend class ResultsPage;
+
 };
 
 #endif // FITTSDATA_H

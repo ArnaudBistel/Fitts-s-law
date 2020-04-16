@@ -181,12 +181,14 @@ HomePage::HomePage(QWidget *parent, QString name):
 void HomePage::setA(double a)
 {
     static_cast<MainWindow*>(this->parent())->getFittsTestWindow().setA(a);
+        static_cast<MainWindow*>(this->parent())->getResultsPage().setA(a);
 }
 
 
 void HomePage::setB(double b)
 {
     static_cast<MainWindow*>(this->parent())->getFittsTestWindow().setB(b);
+            static_cast<MainWindow*>(this->parent())->getResultsPage().setB(b);
 }
 
 
@@ -213,6 +215,10 @@ void HomePage::launch_test()
 {
     emit changeInterface("fitts_page");
     static_cast<MainWindow*>(this->parent())->getFittsTestWindow().startCountdown();
+    static_cast<MainWindow*>(this->parent())->getResultsPage().setTestParams(
+                this->target_number_spinbox->value(),
+                this->target_mini_size_spinbox->value(),
+                this->target_max_size_spinbox->value());
 }
 
 

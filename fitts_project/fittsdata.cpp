@@ -42,6 +42,7 @@ vector< tuple<int, int, double, double> > FittsData::getData()
 
 void FittsData::computeTestResults()
 {
+    dataToPublish.clear();
     for (data_to_compute_tuple::const_iterator i = dataToCompute.begin(); i != dataToCompute.end(); ++i)
     {
         std::cout << "fucking distance : " << get<0>(*i) << endl ;

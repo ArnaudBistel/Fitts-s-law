@@ -1,3 +1,6 @@
+// TODO nombre de target restantes sur la cible pour faire comme un décompte.
+
+
 #include "fittstestwindow.h"
 #include <iostream>
 #include "mainwindow.h"
@@ -325,6 +328,13 @@ void FittsTestWindow::startCountdown()
 
     click_me_button->setText("6");
     countdown_timer->start(1000);
+}
+
+void FittsTestWindow::stopCountdown()
+{
+
+
+    countdown_timer->stop();
 }
 
 

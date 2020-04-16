@@ -14,13 +14,13 @@ EQ            = =
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DMINGW_HAS_SECURE_API=1 -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_NEEDS_QMAIN
+DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DMINGW_HAS_SECURE_API=1 -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_MULTIMEDIA_LIB -DQT_CHARTS_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_NEEDS_QMAIN
 CFLAGS        = -fno-keep-inline-dllexport -O2 -Wall -Wextra -Wextra $(DEFINES)
 CXXFLAGS      = -fno-keep-inline-dllexport -O2 -std=gnu++11 -Wall -Wextra -Wextra -fexceptions -mthreads $(DEFINES)
-INCPATH       = -I..\..\fitts_project -I. -ID:\Qt\5.14.1\mingw73_64\include -ID:\Qt\5.14.1\mingw73_64\include\QtMultimedia -ID:\Qt\5.14.1\mingw73_64\include\QtWidgets -ID:\Qt\5.14.1\mingw73_64\include\QtGui -ID:\Qt\5.14.1\mingw73_64\include\QtANGLE -ID:\Qt\5.14.1\mingw73_64\include\QtNetwork -ID:\Qt\5.14.1\mingw73_64\include\QtCore -I. -I. -I/include -ID:\Qt\5.14.1\mingw73_64\mkspecs\win32-g++ 
+INCPATH       = -I..\..\fitts_project -I. -ID:\Qt\5.14.1\mingw73_64\include -ID:\Qt\5.14.1\mingw73_64\include\QtMultimedia -ID:\Qt\5.14.1\mingw73_64\include\QtCharts -ID:\Qt\5.14.1\mingw73_64\include\QtWidgets -ID:\Qt\5.14.1\mingw73_64\include\QtGui -ID:\Qt\5.14.1\mingw73_64\include\QtANGLE -ID:\Qt\5.14.1\mingw73_64\include\QtNetwork -ID:\Qt\5.14.1\mingw73_64\include\QtCore -I. -I. -I/include -ID:\Qt\5.14.1\mingw73_64\mkspecs\win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-s -Wl,-subsystem,windows -mthreads
-LIBS        =        D:\Qt\5.14.1\mingw73_64\lib\libQt5Multimedia.a D:\Qt\5.14.1\mingw73_64\lib\libQt5Widgets.a D:\Qt\5.14.1\mingw73_64\lib\libQt5Gui.a D:\Qt\5.14.1\mingw73_64\lib\libQt5Network.a D:\Qt\5.14.1\mingw73_64\lib\libQt5Core.a  -lmingw32 D:\Qt\5.14.1\mingw73_64\lib\libqtmain.a -LC:\openssl\lib -LC:\Utils\my_sql\mysql-5.7.25-winx64\lib -LC:\Utils\postgresql\pgsql\lib -lshell32 
+LIBS        =        D:\Qt\5.14.1\mingw73_64\lib\libQt5Multimedia.a D:\Qt\5.14.1\mingw73_64\lib\libQt5Charts.a D:\Qt\5.14.1\mingw73_64\lib\libQt5Widgets.a D:\Qt\5.14.1\mingw73_64\lib\libQt5Gui.a D:\Qt\5.14.1\mingw73_64\lib\libQt5Network.a D:\Qt\5.14.1\mingw73_64\lib\libQt5Core.a  -lmingw32 D:\Qt\5.14.1\mingw73_64\lib\libqtmain.a -LC:\openssl\lib -LC:\Utils\my_sql\mysql-5.7.25-winx64\lib -LC:\Utils\postgresql\pgsql\lib -lshell32 
 QMAKE         = D:\Qt\5.14.1\mingw73_64\bin\qmake.exe
 DEL_FILE      = del
 CHK_DIR_EXISTS= if not exist
@@ -92,7 +92,7 @@ DESTDIR_TARGET = fitts_project.exe
 first: all
 all: Makefile  fitts_project.exe
 
-fitts_project.exe: D:/Qt/5.14.1/mingw73_64/lib/libQt5Multimedia.a D:/Qt/5.14.1/mingw73_64/lib/libQt5Widgets.a D:/Qt/5.14.1/mingw73_64/lib/libQt5Gui.a D:/Qt/5.14.1/mingw73_64/lib/libQt5Network.a D:/Qt/5.14.1/mingw73_64/lib/libQt5Core.a D:/Qt/5.14.1/mingw73_64/lib/libqtmain.a ui_mainwindow.h $(OBJECTS) 
+fitts_project.exe: D:/Qt/5.14.1/mingw73_64/lib/libQt5Multimedia.a D:/Qt/5.14.1/mingw73_64/lib/libQt5Charts.a D:/Qt/5.14.1/mingw73_64/lib/libQt5Widgets.a D:/Qt/5.14.1/mingw73_64/lib/libQt5Gui.a D:/Qt/5.14.1/mingw73_64/lib/libQt5Network.a D:/Qt/5.14.1/mingw73_64/lib/libQt5Core.a D:/Qt/5.14.1/mingw73_64/lib/libqtmain.a ui_mainwindow.h $(OBJECTS) 
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) @object_script.fitts_project  $(LIBS)
 
 Makefile: ../fitts_project.pro D:/Qt/5.14.1/mingw73_64/mkspecs/win32-g++/qmake.conf D:/Qt/5.14.1/mingw73_64/mkspecs/features/spec_pre.prf \
@@ -141,6 +141,8 @@ Makefile: ../fitts_project.pro D:/Qt/5.14.1/mingw73_64/mkspecs/win32-g++/qmake.c
 		D:/Qt/5.14.1/mingw73_64/mkspecs/modules/qt_lib_bluetooth.pri \
 		D:/Qt/5.14.1/mingw73_64/mkspecs/modules/qt_lib_bluetooth_private.pri \
 		D:/Qt/5.14.1/mingw73_64/mkspecs/modules/qt_lib_bootstrap_private.pri \
+		D:/Qt/5.14.1/mingw73_64/mkspecs/modules/qt_lib_charts.pri \
+		D:/Qt/5.14.1/mingw73_64/mkspecs/modules/qt_lib_charts_private.pri \
 		D:/Qt/5.14.1/mingw73_64/mkspecs/modules/qt_lib_concurrent.pri \
 		D:/Qt/5.14.1/mingw73_64/mkspecs/modules/qt_lib_concurrent_private.pri \
 		D:/Qt/5.14.1/mingw73_64/mkspecs/modules/qt_lib_core.pri \
@@ -272,6 +274,7 @@ Makefile: ../fitts_project.pro D:/Qt/5.14.1/mingw73_64/mkspecs/win32-g++/qmake.c
 		D:/Qt/5.14.1/mingw73_64/mkspecs/features/lex.prf \
 		../fitts_project.pro \
 		D:/Qt/5.14.1/mingw73_64/lib/Qt5Multimedia.prl \
+		D:/Qt/5.14.1/mingw73_64/lib/Qt5Charts.prl \
 		D:/Qt/5.14.1/mingw73_64/lib/Qt5Widgets.prl \
 		D:/Qt/5.14.1/mingw73_64/lib/Qt5Gui.prl \
 		D:/Qt/5.14.1/mingw73_64/lib/Qt5Network.prl \
@@ -324,6 +327,8 @@ D:/Qt/5.14.1/mingw73_64/mkspecs/modules/qt_lib_axserver_private.pri:
 D:/Qt/5.14.1/mingw73_64/mkspecs/modules/qt_lib_bluetooth.pri:
 D:/Qt/5.14.1/mingw73_64/mkspecs/modules/qt_lib_bluetooth_private.pri:
 D:/Qt/5.14.1/mingw73_64/mkspecs/modules/qt_lib_bootstrap_private.pri:
+D:/Qt/5.14.1/mingw73_64/mkspecs/modules/qt_lib_charts.pri:
+D:/Qt/5.14.1/mingw73_64/mkspecs/modules/qt_lib_charts_private.pri:
 D:/Qt/5.14.1/mingw73_64/mkspecs/modules/qt_lib_concurrent.pri:
 D:/Qt/5.14.1/mingw73_64/mkspecs/modules/qt_lib_concurrent_private.pri:
 D:/Qt/5.14.1/mingw73_64/mkspecs/modules/qt_lib_core.pri:
@@ -455,6 +460,7 @@ D:/Qt/5.14.1/mingw73_64/mkspecs/features/yacc.prf:
 D:/Qt/5.14.1/mingw73_64/mkspecs/features/lex.prf:
 ../fitts_project.pro:
 D:/Qt/5.14.1/mingw73_64/lib/Qt5Multimedia.prl:
+D:/Qt/5.14.1/mingw73_64/lib/Qt5Charts.prl:
 D:/Qt/5.14.1/mingw73_64/lib/Qt5Widgets.prl:
 D:/Qt/5.14.1/mingw73_64/lib/Qt5Gui.prl:
 D:/Qt/5.14.1/mingw73_64/lib/Qt5Network.prl:
@@ -466,7 +472,7 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) fitts_project.zip $(SOURCES) $(DIST) ..\fitts_project.pro D:\Qt\5.14.1\mingw73_64\mkspecs\features\spec_pre.prf D:\Qt\5.14.1\mingw73_64\mkspecs\qdevice.pri D:\Qt\5.14.1\mingw73_64\mkspecs\features\device_config.prf D:\Qt\5.14.1\mingw73_64\mkspecs\common\sanitize.conf D:\Qt\5.14.1\mingw73_64\mkspecs\common\gcc-base.conf D:\Qt\5.14.1\mingw73_64\mkspecs\common\g++-base.conf D:\Qt\5.14.1\mingw73_64\mkspecs\common\angle.conf D:\Qt\5.14.1\mingw73_64\mkspecs\features\win32\windows_vulkan_sdk.prf D:\Qt\5.14.1\mingw73_64\mkspecs\common\windows-vulkan.conf D:\Qt\5.14.1\mingw73_64\mkspecs\common\g++-win32.conf D:\Qt\5.14.1\mingw73_64\mkspecs\common\windows-desktop.conf D:\Qt\5.14.1\mingw73_64\mkspecs\qconfig.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3danimation.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3danimation_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dcore.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dcore_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dextras.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dextras_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dinput.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dinput_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dlogic.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dlogic_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquick.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquick_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickextras.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickextras_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickinput.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickinput_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickrender.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickrender_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3drender.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3drender_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_accessibility_support_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axbase.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axbase_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axcontainer.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axcontainer_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axserver.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axserver_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_bluetooth.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_bluetooth_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_bootstrap_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_concurrent.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_concurrent_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_core.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_core_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_dbus.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_dbus_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_designer.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_designer_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_designercomponents_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_edid_support_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_egl_support_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_fb_support_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_gamepad.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_gamepad_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_gui.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_gui_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_help.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_help_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_location.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_location_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_multimedia.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_multimedia_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_network.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_network_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_nfc.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_nfc_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_opengl.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_opengl_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_openglextensions.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_openglextensions_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_positioning.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_positioning_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_positioningquick.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_positioningquick_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_printsupport.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_printsupport_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qml.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qml_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmldebug_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmlmodels.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmlmodels_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmltest.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmltest_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmlworkerscript.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickparticles_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickshapes_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quicktemplates2.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickwidgets.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_remoteobjects.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_remoteobjects_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_repparser.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_repparser_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_scxml.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_scxml_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_sensors.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_sensors_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_serialbus.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_serialbus_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_serialport.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_serialport_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_sql.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_sql_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_svg.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_svg_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_testlib.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_testlib_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_texttospeech.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_texttospeech_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_theme_support_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_uiplugin.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_uitools.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_uitools_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_vulkan_support_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_webchannel.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_webchannel_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_websockets.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_websockets_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_widgets.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_widgets_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_winextras.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_winextras_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_xml.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_xml_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\features\qt_functions.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\qt_config.prf D:\Qt\5.14.1\mingw73_64\mkspecs\win32-g++\qmake.conf D:\Qt\5.14.1\mingw73_64\mkspecs\features\spec_post.prf .qmake.stash D:\Qt\5.14.1\mingw73_64\mkspecs\features\exclusive_builds.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\toolchain.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\default_pre.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\win32\default_pre.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\resolve_config.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\default_post.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\resources_functions.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\qtquickcompiler.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\precompile_header.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\warn_on.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\qt.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\resources.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\moc.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\win32\opengl.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\uic.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\qmake_use.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\file_copies.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\win32\windows.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\testcase_targets.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\exceptions.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\yacc.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\lex.prf ..\fitts_project.pro D:\Qt\5.14.1\mingw73_64\lib\Qt5Multimedia.prl D:\Qt\5.14.1\mingw73_64\lib\Qt5Widgets.prl D:\Qt\5.14.1\mingw73_64\lib\Qt5Gui.prl D:\Qt\5.14.1\mingw73_64\lib\Qt5Network.prl D:\Qt\5.14.1\mingw73_64\lib\Qt5Core.prl D:\Qt\5.14.1\mingw73_64\lib\qtmain.prl      D:\Qt\5.14.1\mingw73_64\mkspecs\features\data\dummy.cpp ..\fittsdata.h ..\fittstestwindow.h ..\homepage.h ..\mainwindow.h ..\resultspage.h ..\testwindow.h  ..\fittsdata.cpp ..\fittstestwindow.cpp ..\homepage.cpp ..\main.cpp ..\mainwindow.cpp ..\resultspage.cpp ..\mainwindow.ui    
+	$(ZIP) fitts_project.zip $(SOURCES) $(DIST) ..\fitts_project.pro D:\Qt\5.14.1\mingw73_64\mkspecs\features\spec_pre.prf D:\Qt\5.14.1\mingw73_64\mkspecs\qdevice.pri D:\Qt\5.14.1\mingw73_64\mkspecs\features\device_config.prf D:\Qt\5.14.1\mingw73_64\mkspecs\common\sanitize.conf D:\Qt\5.14.1\mingw73_64\mkspecs\common\gcc-base.conf D:\Qt\5.14.1\mingw73_64\mkspecs\common\g++-base.conf D:\Qt\5.14.1\mingw73_64\mkspecs\common\angle.conf D:\Qt\5.14.1\mingw73_64\mkspecs\features\win32\windows_vulkan_sdk.prf D:\Qt\5.14.1\mingw73_64\mkspecs\common\windows-vulkan.conf D:\Qt\5.14.1\mingw73_64\mkspecs\common\g++-win32.conf D:\Qt\5.14.1\mingw73_64\mkspecs\common\windows-desktop.conf D:\Qt\5.14.1\mingw73_64\mkspecs\qconfig.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3danimation.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3danimation_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dcore.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dcore_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dextras.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dextras_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dinput.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dinput_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dlogic.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dlogic_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquick.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquick_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickextras.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickextras_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickinput.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickinput_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickrender.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickrender_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3drender.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3drender_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_accessibility_support_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axbase.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axbase_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axcontainer.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axcontainer_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axserver.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axserver_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_bluetooth.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_bluetooth_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_bootstrap_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_charts.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_charts_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_concurrent.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_concurrent_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_core.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_core_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_dbus.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_dbus_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_designer.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_designer_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_designercomponents_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_edid_support_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_egl_support_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_fb_support_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_gamepad.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_gamepad_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_gui.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_gui_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_help.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_help_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_location.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_location_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_multimedia.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_multimedia_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_network.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_network_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_nfc.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_nfc_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_opengl.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_opengl_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_openglextensions.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_openglextensions_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_positioning.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_positioning_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_positioningquick.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_positioningquick_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_printsupport.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_printsupport_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qml.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qml_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmldebug_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmlmodels.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmlmodels_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmltest.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmltest_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmlworkerscript.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickparticles_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickshapes_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quicktemplates2.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickwidgets.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_remoteobjects.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_remoteobjects_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_repparser.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_repparser_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_scxml.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_scxml_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_sensors.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_sensors_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_serialbus.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_serialbus_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_serialport.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_serialport_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_sql.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_sql_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_svg.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_svg_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_testlib.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_testlib_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_texttospeech.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_texttospeech_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_theme_support_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_uiplugin.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_uitools.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_uitools_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_vulkan_support_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_webchannel.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_webchannel_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_websockets.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_websockets_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_widgets.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_widgets_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_winextras.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_winextras_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_xml.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_xml_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns.pri D:\Qt\5.14.1\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\Qt\5.14.1\mingw73_64\mkspecs\features\qt_functions.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\qt_config.prf D:\Qt\5.14.1\mingw73_64\mkspecs\win32-g++\qmake.conf D:\Qt\5.14.1\mingw73_64\mkspecs\features\spec_post.prf .qmake.stash D:\Qt\5.14.1\mingw73_64\mkspecs\features\exclusive_builds.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\toolchain.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\default_pre.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\win32\default_pre.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\resolve_config.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\default_post.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\resources_functions.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\qtquickcompiler.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\precompile_header.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\warn_on.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\qt.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\resources.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\moc.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\win32\opengl.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\uic.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\qmake_use.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\file_copies.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\win32\windows.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\testcase_targets.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\exceptions.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\yacc.prf D:\Qt\5.14.1\mingw73_64\mkspecs\features\lex.prf ..\fitts_project.pro D:\Qt\5.14.1\mingw73_64\lib\Qt5Multimedia.prl D:\Qt\5.14.1\mingw73_64\lib\Qt5Charts.prl D:\Qt\5.14.1\mingw73_64\lib\Qt5Widgets.prl D:\Qt\5.14.1\mingw73_64\lib\Qt5Gui.prl D:\Qt\5.14.1\mingw73_64\lib\Qt5Network.prl D:\Qt\5.14.1\mingw73_64\lib\Qt5Core.prl D:\Qt\5.14.1\mingw73_64\lib\qtmain.prl      D:\Qt\5.14.1\mingw73_64\mkspecs\features\data\dummy.cpp ..\fittsdata.h ..\fittstestwindow.h ..\homepage.h ..\mainwindow.h ..\resultspage.h ..\testwindow.h  ..\fittsdata.cpp ..\fittstestwindow.cpp ..\homepage.cpp ..\main.cpp ..\mainwindow.cpp ..\resultspage.cpp ..\mainwindow.ui    
 
 clean: compiler_clean 
 	-$(DEL_FILE) fittsdata.o fittstestwindow.o homepage.o main.o mainwindow.o resultspage.o moc_fittstestwindow.o moc_homepage.o moc_mainwindow.o moc_resultspage.o
@@ -973,12 +979,100 @@ moc_fittstestwindow.cpp: ../fittstestwindow.h \
 		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/qwidgetaction.h \
 		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/qwizard.h \
 		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/qtwidgetsversion.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtMultimedia/QSound \
+		D:/Qt/5.14.1/mingw73_64/include/QtMultimedia/qsound.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtMultimedia/qtmultimediaglobal.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtMultimedia/qtmultimedia-config.h \
 		../homepage.h \
 		../FittsData.h \
 		../resultspage.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QtCharts \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QtChartsDepends \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qchartglobal.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCore/QtGlobal \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/chartsnamespace.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qabstractaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QChartGlobal \
+		D:/Qt/5.14.1/mingw73_64/include/QtGui/QPen \
+		D:/Qt/5.14.1/mingw73_64/include/QtGui/QFont \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qabstractbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAbstractSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qabstractseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAbstractAxis \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qarealegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QLegendMarker \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QLegend \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlegend.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QGraphicsWidget \
+		D:/Qt/5.14.1/mingw73_64/include/QtGui/QBrush \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAreaSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qareaseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarcategoryaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarlegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAbstractBarSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBarSet \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarset.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxplotlegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBoxPlotSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxplotseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBoxSet \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxset.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxplotmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlesticklegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QCandlestickSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlestickseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlestickmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlestickset.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcategoryaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QValueAxis \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvalueaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qchart.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qchartview.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QChart \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QGraphicsView \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qdatetimeaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhbarmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBarModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhboxplotmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBoxPlotModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhcandlestickmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QCandlestickModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhorizontalbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhorizontalpercentbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhorizontalstackedbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhpiemodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QPieModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpiemodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhxymodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QXYModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qxymodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlineseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QXYSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qxyseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlogvalueaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpercentbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpielegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QPieSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpieseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QPieSlice \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpieslice.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpolarchart.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qscatterseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qsplineseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qstackedbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvbarmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvboxplotmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvcandlestickmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvpiemodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvxymodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qxylegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qtchartsversion.h \
 		moc_predefs.h \
 		D:/Qt/5.14.1/mingw73_64/bin/moc.exe
-	D:\Qt\5.14.1\mingw73_64\bin\moc.exe $(DEFINES) --include H:/UTBM/P20/GL40/TPs/TP2/Fitts-s-law/fitts_project/release/moc_predefs.h -ID:/Qt/5.14.1/mingw73_64/mkspecs/win32-g++ -IH:/UTBM/P20/GL40/TPs/TP2/Fitts-s-law/fitts_project -ID:/Qt/5.14.1/mingw73_64/include -ID:/Qt/5.14.1/mingw73_64/include/QtMultimedia -ID:/Qt/5.14.1/mingw73_64/include/QtWidgets -ID:/Qt/5.14.1/mingw73_64/include/QtGui -ID:/Qt/5.14.1/mingw73_64/include/QtANGLE -ID:/Qt/5.14.1/mingw73_64/include/QtNetwork -ID:/Qt/5.14.1/mingw73_64/include/QtCore -I. -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -ID:/Qt/Tools/mingw730_64/x86_64-w64-mingw32/include ..\fittstestwindow.h -o moc_fittstestwindow.cpp
+	D:\Qt\5.14.1\mingw73_64\bin\moc.exe $(DEFINES) --include H:/UTBM/P20/GL40/TPs/TP2/Fitts-s-law/fitts_project/release/moc_predefs.h -ID:/Qt/5.14.1/mingw73_64/mkspecs/win32-g++ -IH:/UTBM/P20/GL40/TPs/TP2/Fitts-s-law/fitts_project -ID:/Qt/5.14.1/mingw73_64/include -ID:/Qt/5.14.1/mingw73_64/include/QtMultimedia -ID:/Qt/5.14.1/mingw73_64/include/QtCharts -ID:/Qt/5.14.1/mingw73_64/include/QtWidgets -ID:/Qt/5.14.1/mingw73_64/include/QtGui -ID:/Qt/5.14.1/mingw73_64/include/QtANGLE -ID:/Qt/5.14.1/mingw73_64/include/QtNetwork -ID:/Qt/5.14.1/mingw73_64/include/QtCore -I. -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -ID:/Qt/Tools/mingw730_64/x86_64-w64-mingw32/include ..\fittstestwindow.h -o moc_fittstestwindow.cpp
 
 moc_homepage.cpp: ../homepage.h \
 		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QtWidgets \
@@ -1453,7 +1547,7 @@ moc_homepage.cpp: ../homepage.h \
 		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/qtwidgetsversion.h \
 		moc_predefs.h \
 		D:/Qt/5.14.1/mingw73_64/bin/moc.exe
-	D:\Qt\5.14.1\mingw73_64\bin\moc.exe $(DEFINES) --include H:/UTBM/P20/GL40/TPs/TP2/Fitts-s-law/fitts_project/release/moc_predefs.h -ID:/Qt/5.14.1/mingw73_64/mkspecs/win32-g++ -IH:/UTBM/P20/GL40/TPs/TP2/Fitts-s-law/fitts_project -ID:/Qt/5.14.1/mingw73_64/include -ID:/Qt/5.14.1/mingw73_64/include/QtMultimedia -ID:/Qt/5.14.1/mingw73_64/include/QtWidgets -ID:/Qt/5.14.1/mingw73_64/include/QtGui -ID:/Qt/5.14.1/mingw73_64/include/QtANGLE -ID:/Qt/5.14.1/mingw73_64/include/QtNetwork -ID:/Qt/5.14.1/mingw73_64/include/QtCore -I. -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -ID:/Qt/Tools/mingw730_64/x86_64-w64-mingw32/include ..\homepage.h -o moc_homepage.cpp
+	D:\Qt\5.14.1\mingw73_64\bin\moc.exe $(DEFINES) --include H:/UTBM/P20/GL40/TPs/TP2/Fitts-s-law/fitts_project/release/moc_predefs.h -ID:/Qt/5.14.1/mingw73_64/mkspecs/win32-g++ -IH:/UTBM/P20/GL40/TPs/TP2/Fitts-s-law/fitts_project -ID:/Qt/5.14.1/mingw73_64/include -ID:/Qt/5.14.1/mingw73_64/include/QtMultimedia -ID:/Qt/5.14.1/mingw73_64/include/QtCharts -ID:/Qt/5.14.1/mingw73_64/include/QtWidgets -ID:/Qt/5.14.1/mingw73_64/include/QtGui -ID:/Qt/5.14.1/mingw73_64/include/QtANGLE -ID:/Qt/5.14.1/mingw73_64/include/QtNetwork -ID:/Qt/5.14.1/mingw73_64/include/QtCore -I. -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -ID:/Qt/Tools/mingw730_64/x86_64-w64-mingw32/include ..\homepage.h -o moc_homepage.cpp
 
 moc_mainwindow.cpp: ../mainwindow.h \
 		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QtWidgets \
@@ -1934,9 +2028,95 @@ moc_mainwindow.cpp: ../mainwindow.h \
 		../homepage.h \
 		../FittsData.h \
 		../resultspage.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QtCharts \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QtChartsDepends \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qchartglobal.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCore/QtGlobal \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/chartsnamespace.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qabstractaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QChartGlobal \
+		D:/Qt/5.14.1/mingw73_64/include/QtGui/QPen \
+		D:/Qt/5.14.1/mingw73_64/include/QtGui/QFont \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qabstractbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAbstractSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qabstractseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAbstractAxis \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qarealegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QLegendMarker \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QLegend \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlegend.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QGraphicsWidget \
+		D:/Qt/5.14.1/mingw73_64/include/QtGui/QBrush \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAreaSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qareaseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarcategoryaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarlegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAbstractBarSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBarSet \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarset.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxplotlegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBoxPlotSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxplotseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBoxSet \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxset.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxplotmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlesticklegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QCandlestickSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlestickseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlestickmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlestickset.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcategoryaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QValueAxis \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvalueaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qchart.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qchartview.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QChart \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QGraphicsView \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qdatetimeaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhbarmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBarModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhboxplotmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBoxPlotModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhcandlestickmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QCandlestickModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhorizontalbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhorizontalpercentbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhorizontalstackedbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhpiemodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QPieModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpiemodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhxymodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QXYModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qxymodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlineseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QXYSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qxyseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlogvalueaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpercentbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpielegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QPieSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpieseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QPieSlice \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpieslice.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpolarchart.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qscatterseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qsplineseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qstackedbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvbarmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvboxplotmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvcandlestickmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvpiemodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvxymodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qxylegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qtchartsversion.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QStyle \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QDesktopWidget \
 		moc_predefs.h \
 		D:/Qt/5.14.1/mingw73_64/bin/moc.exe
-	D:\Qt\5.14.1\mingw73_64\bin\moc.exe $(DEFINES) --include H:/UTBM/P20/GL40/TPs/TP2/Fitts-s-law/fitts_project/release/moc_predefs.h -ID:/Qt/5.14.1/mingw73_64/mkspecs/win32-g++ -IH:/UTBM/P20/GL40/TPs/TP2/Fitts-s-law/fitts_project -ID:/Qt/5.14.1/mingw73_64/include -ID:/Qt/5.14.1/mingw73_64/include/QtMultimedia -ID:/Qt/5.14.1/mingw73_64/include/QtWidgets -ID:/Qt/5.14.1/mingw73_64/include/QtGui -ID:/Qt/5.14.1/mingw73_64/include/QtANGLE -ID:/Qt/5.14.1/mingw73_64/include/QtNetwork -ID:/Qt/5.14.1/mingw73_64/include/QtCore -I. -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -ID:/Qt/Tools/mingw730_64/x86_64-w64-mingw32/include ..\mainwindow.h -o moc_mainwindow.cpp
+	D:\Qt\5.14.1\mingw73_64\bin\moc.exe $(DEFINES) --include H:/UTBM/P20/GL40/TPs/TP2/Fitts-s-law/fitts_project/release/moc_predefs.h -ID:/Qt/5.14.1/mingw73_64/mkspecs/win32-g++ -IH:/UTBM/P20/GL40/TPs/TP2/Fitts-s-law/fitts_project -ID:/Qt/5.14.1/mingw73_64/include -ID:/Qt/5.14.1/mingw73_64/include/QtMultimedia -ID:/Qt/5.14.1/mingw73_64/include/QtCharts -ID:/Qt/5.14.1/mingw73_64/include/QtWidgets -ID:/Qt/5.14.1/mingw73_64/include/QtGui -ID:/Qt/5.14.1/mingw73_64/include/QtANGLE -ID:/Qt/5.14.1/mingw73_64/include/QtNetwork -ID:/Qt/5.14.1/mingw73_64/include/QtCore -I. -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -ID:/Qt/Tools/mingw730_64/x86_64-w64-mingw32/include ..\mainwindow.h -o moc_mainwindow.cpp
 
 moc_resultspage.cpp: ../resultspage.h \
 		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QtWidgets \
@@ -2409,9 +2589,93 @@ moc_resultspage.cpp: ../resultspage.h \
 		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/qwidgetaction.h \
 		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/qwizard.h \
 		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/qtwidgetsversion.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QtCharts \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QtChartsDepends \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qchartglobal.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCore/QtGlobal \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/chartsnamespace.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qabstractaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QChartGlobal \
+		D:/Qt/5.14.1/mingw73_64/include/QtGui/QPen \
+		D:/Qt/5.14.1/mingw73_64/include/QtGui/QFont \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qabstractbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAbstractSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qabstractseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAbstractAxis \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qarealegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QLegendMarker \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QLegend \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlegend.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QGraphicsWidget \
+		D:/Qt/5.14.1/mingw73_64/include/QtGui/QBrush \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAreaSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qareaseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarcategoryaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarlegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAbstractBarSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBarSet \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarset.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxplotlegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBoxPlotSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxplotseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBoxSet \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxset.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxplotmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlesticklegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QCandlestickSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlestickseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlestickmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlestickset.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcategoryaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QValueAxis \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvalueaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qchart.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qchartview.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QChart \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QGraphicsView \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qdatetimeaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhbarmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBarModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhboxplotmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBoxPlotModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhcandlestickmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QCandlestickModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhorizontalbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhorizontalpercentbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhorizontalstackedbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhpiemodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QPieModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpiemodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhxymodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QXYModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qxymodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlineseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QXYSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qxyseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlogvalueaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpercentbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpielegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QPieSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpieseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QPieSlice \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpieslice.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpolarchart.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qscatterseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qsplineseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qstackedbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvbarmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvboxplotmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvcandlestickmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvpiemodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvxymodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qxylegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qtchartsversion.h \
 		moc_predefs.h \
 		D:/Qt/5.14.1/mingw73_64/bin/moc.exe
-	D:\Qt\5.14.1\mingw73_64\bin\moc.exe $(DEFINES) --include H:/UTBM/P20/GL40/TPs/TP2/Fitts-s-law/fitts_project/release/moc_predefs.h -ID:/Qt/5.14.1/mingw73_64/mkspecs/win32-g++ -IH:/UTBM/P20/GL40/TPs/TP2/Fitts-s-law/fitts_project -ID:/Qt/5.14.1/mingw73_64/include -ID:/Qt/5.14.1/mingw73_64/include/QtMultimedia -ID:/Qt/5.14.1/mingw73_64/include/QtWidgets -ID:/Qt/5.14.1/mingw73_64/include/QtGui -ID:/Qt/5.14.1/mingw73_64/include/QtANGLE -ID:/Qt/5.14.1/mingw73_64/include/QtNetwork -ID:/Qt/5.14.1/mingw73_64/include/QtCore -I. -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -ID:/Qt/Tools/mingw730_64/x86_64-w64-mingw32/include ..\resultspage.h -o moc_resultspage.cpp
+	D:\Qt\5.14.1\mingw73_64\bin\moc.exe $(DEFINES) --include H:/UTBM/P20/GL40/TPs/TP2/Fitts-s-law/fitts_project/release/moc_predefs.h -ID:/Qt/5.14.1/mingw73_64/mkspecs/win32-g++ -IH:/UTBM/P20/GL40/TPs/TP2/Fitts-s-law/fitts_project -ID:/Qt/5.14.1/mingw73_64/include -ID:/Qt/5.14.1/mingw73_64/include/QtMultimedia -ID:/Qt/5.14.1/mingw73_64/include/QtCharts -ID:/Qt/5.14.1/mingw73_64/include/QtWidgets -ID:/Qt/5.14.1/mingw73_64/include/QtGui -ID:/Qt/5.14.1/mingw73_64/include/QtANGLE -ID:/Qt/5.14.1/mingw73_64/include/QtNetwork -ID:/Qt/5.14.1/mingw73_64/include/QtCore -I. -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -ID:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -ID:/Qt/Tools/mingw730_64/x86_64-w64-mingw32/include ..\resultspage.h -o moc_resultspage.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -3380,14 +3644,100 @@ fittstestwindow.o: ../fittstestwindow.cpp ../fittstestwindow.h \
 		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/qwidgetaction.h \
 		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/qwizard.h \
 		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/qtwidgetsversion.h \
-		../homepage.h \
-		../FittsData.h \
-		../resultspage.h \
-		../mainwindow.h \
 		D:/Qt/5.14.1/mingw73_64/include/QtMultimedia/QSound \
 		D:/Qt/5.14.1/mingw73_64/include/QtMultimedia/qsound.h \
 		D:/Qt/5.14.1/mingw73_64/include/QtMultimedia/qtmultimediaglobal.h \
-		D:/Qt/5.14.1/mingw73_64/include/QtMultimedia/qtmultimedia-config.h
+		D:/Qt/5.14.1/mingw73_64/include/QtMultimedia/qtmultimedia-config.h \
+		../homepage.h \
+		../FittsData.h \
+		../resultspage.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QtCharts \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QtChartsDepends \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qchartglobal.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCore/QtGlobal \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/chartsnamespace.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qabstractaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QChartGlobal \
+		D:/Qt/5.14.1/mingw73_64/include/QtGui/QPen \
+		D:/Qt/5.14.1/mingw73_64/include/QtGui/QFont \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qabstractbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAbstractSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qabstractseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAbstractAxis \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qarealegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QLegendMarker \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QLegend \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlegend.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QGraphicsWidget \
+		D:/Qt/5.14.1/mingw73_64/include/QtGui/QBrush \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAreaSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qareaseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarcategoryaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarlegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAbstractBarSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBarSet \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarset.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxplotlegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBoxPlotSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxplotseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBoxSet \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxset.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxplotmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlesticklegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QCandlestickSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlestickseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlestickmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlestickset.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcategoryaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QValueAxis \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvalueaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qchart.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qchartview.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QChart \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QGraphicsView \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qdatetimeaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhbarmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBarModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhboxplotmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBoxPlotModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhcandlestickmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QCandlestickModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhorizontalbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhorizontalpercentbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhorizontalstackedbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhpiemodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QPieModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpiemodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhxymodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QXYModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qxymodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlineseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QXYSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qxyseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlogvalueaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpercentbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpielegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QPieSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpieseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QPieSlice \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpieslice.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpolarchart.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qscatterseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qsplineseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qstackedbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvbarmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvboxplotmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvcandlestickmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvpiemodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvxymodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qxylegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qtchartsversion.h \
+		../mainwindow.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QStyle \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QDesktopWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o fittstestwindow.o ..\fittstestwindow.cpp
 
 homepage.o: ../homepage.cpp ../homepage.h \
@@ -3868,7 +4218,93 @@ homepage.o: ../homepage.cpp ../homepage.h \
 		D:/Qt/5.14.1/mingw73_64/include/QtMultimedia/qtmultimedia-config.h \
 		../fittstestwindow.h \
 		../FittsData.h \
-		../resultspage.h
+		../resultspage.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QtCharts \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QtChartsDepends \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qchartglobal.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCore/QtGlobal \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/chartsnamespace.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qabstractaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QChartGlobal \
+		D:/Qt/5.14.1/mingw73_64/include/QtGui/QPen \
+		D:/Qt/5.14.1/mingw73_64/include/QtGui/QFont \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qabstractbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAbstractSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qabstractseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAbstractAxis \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qarealegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QLegendMarker \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QLegend \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlegend.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QGraphicsWidget \
+		D:/Qt/5.14.1/mingw73_64/include/QtGui/QBrush \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAreaSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qareaseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarcategoryaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarlegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAbstractBarSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBarSet \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarset.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxplotlegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBoxPlotSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxplotseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBoxSet \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxset.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxplotmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlesticklegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QCandlestickSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlestickseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlestickmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlestickset.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcategoryaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QValueAxis \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvalueaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qchart.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qchartview.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QChart \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QGraphicsView \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qdatetimeaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhbarmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBarModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhboxplotmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBoxPlotModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhcandlestickmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QCandlestickModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhorizontalbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhorizontalpercentbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhorizontalstackedbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhpiemodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QPieModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpiemodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhxymodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QXYModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qxymodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlineseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QXYSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qxyseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlogvalueaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpercentbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpielegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QPieSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpieseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QPieSlice \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpieslice.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpolarchart.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qscatterseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qsplineseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qstackedbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvbarmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvboxplotmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvcandlestickmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvpiemodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvxymodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qxylegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qtchartsversion.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QStyle \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QDesktopWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o homepage.o ..\homepage.cpp
 
 main.o: ../main.cpp ../mainwindow.h \
@@ -4350,6 +4786,92 @@ main.o: ../main.cpp ../mainwindow.h \
 		../homepage.h \
 		../FittsData.h \
 		../resultspage.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QtCharts \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QtChartsDepends \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qchartglobal.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCore/QtGlobal \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/chartsnamespace.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qabstractaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QChartGlobal \
+		D:/Qt/5.14.1/mingw73_64/include/QtGui/QPen \
+		D:/Qt/5.14.1/mingw73_64/include/QtGui/QFont \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qabstractbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAbstractSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qabstractseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAbstractAxis \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qarealegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QLegendMarker \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QLegend \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlegend.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QGraphicsWidget \
+		D:/Qt/5.14.1/mingw73_64/include/QtGui/QBrush \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAreaSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qareaseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarcategoryaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarlegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAbstractBarSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBarSet \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarset.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxplotlegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBoxPlotSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxplotseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBoxSet \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxset.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxplotmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlesticklegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QCandlestickSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlestickseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlestickmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlestickset.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcategoryaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QValueAxis \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvalueaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qchart.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qchartview.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QChart \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QGraphicsView \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qdatetimeaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhbarmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBarModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhboxplotmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBoxPlotModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhcandlestickmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QCandlestickModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhorizontalbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhorizontalpercentbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhorizontalstackedbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhpiemodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QPieModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpiemodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhxymodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QXYModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qxymodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlineseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QXYSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qxyseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlogvalueaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpercentbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpielegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QPieSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpieseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QPieSlice \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpieslice.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpolarchart.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qscatterseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qsplineseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qstackedbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvbarmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvboxplotmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvcandlestickmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvpiemodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvxymodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qxylegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qtchartsversion.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QStyle \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QDesktopWidget \
 		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QApplication
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ..\main.cpp
 
@@ -4831,7 +5353,93 @@ mainwindow.o: ../mainwindow.cpp ../mainwindow.h \
 		../fittstestwindow.h \
 		../homepage.h \
 		../FittsData.h \
-		../resultspage.h
+		../resultspage.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QtCharts \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QtChartsDepends \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qchartglobal.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCore/QtGlobal \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/chartsnamespace.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qabstractaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QChartGlobal \
+		D:/Qt/5.14.1/mingw73_64/include/QtGui/QPen \
+		D:/Qt/5.14.1/mingw73_64/include/QtGui/QFont \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qabstractbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAbstractSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qabstractseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAbstractAxis \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qarealegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QLegendMarker \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QLegend \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlegend.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QGraphicsWidget \
+		D:/Qt/5.14.1/mingw73_64/include/QtGui/QBrush \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAreaSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qareaseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarcategoryaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarlegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAbstractBarSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBarSet \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarset.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxplotlegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBoxPlotSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxplotseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBoxSet \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxset.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxplotmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlesticklegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QCandlestickSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlestickseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlestickmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlestickset.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcategoryaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QValueAxis \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvalueaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qchart.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qchartview.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QChart \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QGraphicsView \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qdatetimeaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhbarmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBarModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhboxplotmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBoxPlotModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhcandlestickmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QCandlestickModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhorizontalbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhorizontalpercentbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhorizontalstackedbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhpiemodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QPieModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpiemodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhxymodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QXYModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qxymodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlineseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QXYSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qxyseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlogvalueaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpercentbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpielegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QPieSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpieseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QPieSlice \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpieslice.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpolarchart.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qscatterseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qsplineseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qstackedbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvbarmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvboxplotmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvcandlestickmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvpiemodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvxymodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qxylegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qtchartsversion.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QStyle \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QDesktopWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ..\mainwindow.cpp
 
 resultspage.o: ../resultspage.cpp ../resultspage.h \
@@ -5305,6 +5913,90 @@ resultspage.o: ../resultspage.cpp ../resultspage.h \
 		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/qwidgetaction.h \
 		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/qwizard.h \
 		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/qtwidgetsversion.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QtCharts \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QtChartsDepends \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qchartglobal.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCore/QtGlobal \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/chartsnamespace.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qabstractaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QChartGlobal \
+		D:/Qt/5.14.1/mingw73_64/include/QtGui/QPen \
+		D:/Qt/5.14.1/mingw73_64/include/QtGui/QFont \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qabstractbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAbstractSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qabstractseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAbstractAxis \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qarealegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QLegendMarker \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QLegend \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlegend.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QGraphicsWidget \
+		D:/Qt/5.14.1/mingw73_64/include/QtGui/QBrush \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAreaSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qareaseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarcategoryaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarlegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QAbstractBarSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBarSet \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarset.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxplotlegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBoxPlotSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxplotseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBoxSet \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxset.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qboxplotmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlesticklegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QCandlestickSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlestickseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlestickmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcandlestickset.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qcategoryaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QValueAxis \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvalueaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qchart.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qchartview.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QChart \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QGraphicsView \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qdatetimeaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhbarmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBarModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhboxplotmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QBoxPlotModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhcandlestickmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QCandlestickModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhorizontalbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhorizontalpercentbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhorizontalstackedbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhpiemodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QPieModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpiemodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qhxymodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QXYModelMapper \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qxymodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlineseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QXYSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qxyseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qlogvalueaxis.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpercentbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpielegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QPieSeries \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpieseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/QPieSlice \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpieslice.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qpolarchart.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qscatterseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qsplineseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qstackedbarseries.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvbarmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvboxplotmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvcandlestickmodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvpiemodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qvxymodelmapper.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qxylegendmarker.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtCharts/qtchartsversion.h \
 		../mainwindow.h \
 		D:/Qt/5.14.1/mingw73_64/include/QtMultimedia/QSound \
 		D:/Qt/5.14.1/mingw73_64/include/QtMultimedia/qsound.h \
@@ -5312,7 +6004,9 @@ resultspage.o: ../resultspage.cpp ../resultspage.h \
 		D:/Qt/5.14.1/mingw73_64/include/QtMultimedia/qtmultimedia-config.h \
 		../fittstestwindow.h \
 		../homepage.h \
-		../FittsData.h
+		../FittsData.h \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QStyle \
+		D:/Qt/5.14.1/mingw73_64/include/QtWidgets/QDesktopWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o resultspage.o ..\resultspage.cpp
 
 moc_fittstestwindow.o: moc_fittstestwindow.cpp 
