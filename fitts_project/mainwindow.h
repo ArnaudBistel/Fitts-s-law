@@ -21,7 +21,6 @@ public:
 
 public slots:
     void changeOnglet(QString name);
-//    void setA(double A);
 
 private:
     HomePage *home_page;

@@ -1,24 +1,9 @@
 #include "mainwindow.h"
 
 MainWindow::MainWindow()
-
 {
-
-
-
     home_page = new HomePage(this, "home_page");
     this->addWidget(static_cast<QWidget*>(home_page));
-
-//    QPalette pal(home_page->palette());
-//    QColor color(170,189,206);
-//    pal.setColor (QPalette::Background, color);
-//    home_page->setAutoFillBackground (true);
-//    home_page->setPalette (pal);
-
-//    home_page->setAttribute(Qt::WA_StyledBackground, true);
-//    home_page->setStyleSheet("background-color: rgb(170,189,206); color: white; ");
-
-
 
     fitts_page = new FittsTestWindow(this, "fitts_page");
     this->addWidget(static_cast<QWidget*>(fitts_page));
@@ -44,15 +29,9 @@ ResultsPage& MainWindow::getResultsPage()
 }
 
 
-//void MainWindow::setA(double a)
-//{
-//    fitts_page->setA(a);
-//}
-
-
 MainWindow::~MainWindow()
-{
-}
+{}
+
 
 // slot pour changer d'onglet
 void MainWindow::changeOnglet(QString name)
@@ -77,17 +56,4 @@ void MainWindow::changeOnglet(QString name)
     {
         QMessageBox::information(0,tr("Erreur changement onglet"),tr("Impossible de changer l'interface pour l'onglet ")+name+tr(".\nCet onglet n'existe plus ou n'a pas été créer."));
     }
-
-//    for (int i = 0; i < this->count (); ++i)
-//    {
-//        // determine the vertical size policy
-//        QSizePolicy::Policy policy = QSizePolicy::Ignored;
-//        if (i == this->currentIndex ())
-//            policy = QSizePolicy::Expanding;
-
-//        // update the size policy
-//        QWidget* pPage = this->widget (i);
-//        pPage->setSizePolicy (policy, policy);
-//    }
-
 }

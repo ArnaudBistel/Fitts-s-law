@@ -52,7 +52,6 @@ private:
     QSpinBox *target_max_size_spinbox;
 
     // quit / start buttons
-//    QGridLayout *bottom_layout;
     QHBoxLayout *buttons_layout;
     QPushButton *quit_button;
     QPushButton *start_button;

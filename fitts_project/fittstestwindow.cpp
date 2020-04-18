@@ -1,13 +1,6 @@
-// TODO nombre de target restantes sur la cible pour faire comme un décompte.
-
-
 #include "fittstestwindow.h"
 #include <iostream>
 #include "mainwindow.h"
-//FittsTestWindow::FittsTestWindow(const FittsTestWindow& fitts)
-//{
-
-//}
 
 
 FittsTestWindow::FittsTestWindow(QWidget *parent, QString name):
@@ -42,41 +35,27 @@ FittsTestWindow::FittsTestWindow(QWidget *parent, QString name):
 
     rect->setFixedSize(screen_width * 2/3,screen_height * 2/3);
     rect->setStyleSheet("background-color: rgb(170,189,206); border: 1px solid grey;");
-//    rect->setAlignment(Qt::AlignHCenter);
 
     this->setObjectName(name);
     connect(this,SIGNAL(changeInterface(QString)), this->parent(),SLOT(changeOnglet(QString)));
 
-//    instructions_label = new QLabel("Cliquez sur les cibles ROUGE\n");
     instructions_label = new QLabel;
     instructions_label->setText("<font color=\"black\">Cliquez sur les cibles </font> <font color=\"red\">ROUGE</font><font color=\"black\"> !</font>");
 
     instructions_label->setFont(QFont("Roboto", 12, QFont::Bold, true));
     instructions_label->setAlignment(Qt::AlignHCenter);
 
-
-//    countdown_layout = new QHBoxLayout;
-//    countdown_text_label = new QLabel ("Le test commencera dans ");
-//    countdown_label = new QLabel("5");
-//    countdown_layout->addWidget(countdown_text_label);
-//    countdown_layout->addWidget(countdown_label);
-
     countdown_timer = new QTimer(this);
     connect(countdown_timer, SIGNAL(timeout()), this, SLOT(updateCountdown()));
 
     instructions_layout = new QVBoxLayout;
     instructions_layout->addWidget(instructions_label);
-//    instructions_layout->setAlignment(instructions_label, Qt::AlignCenter);
-//    instructions_layout->addLayout(countdown_layout);
 
     click_me_button = new QPushButton("5", rect);
-    click_me_button->setFont(QFont("Roboto", 12, QFont::Bold, true));
-    click_me_button->setStyleSheet("background-color: rgb(217,72,72); color: white;");
-//    click_me_button->setVisible(false);
 
     // Get size of test screen
-    int window_width = rect->size().width()/2;
-    int window_height = rect->size().height()/2;
+//    int window_width = rect->size().width()/2;
+//    int window_height = rect->size().height()/2;
     int click_me_button_width = rect->size().width() / 10 ;
     if (click_me_button_width < 50 ){
         click_me_button_width = 50 ;
@@ -84,56 +63,27 @@ FittsTestWindow::FittsTestWindow(QWidget *parent, QString name):
     int click_me_button_height = click_me_button_width;
     click_me_button->setGeometry(((rect->width()) / 2) - (click_me_button_width/ 2), ((rect->height() / 2) - (click_me_button_height / 2)), click_me_button_width, click_me_button_height);
 
-//    click_me_button->move((((rect->width()) / 2) - (click_me_button_width/ 2)), ((rect->height() / 2) - (click_me_button_height / 2)));
+
+    click_me_button->setStyleSheet("background-color: rgb(217,72,72); color: white;");
     click_me_button->setEnabled(false);
 
     connect(click_me_button, SIGNAL(clicked()), this, SLOT(recordData()));
     connect(click_me_button, SIGNAL(clicked()), this, SLOT(changeButtonPosition()));
 
-//    mouse_position_label = new QLabel();
-//    instructions_layout->addWidget(mouse_position_label);
-//    label = new QLabel();
-//    instructions_layout->addWidget(label);
-
-//    label = new QLabel();
-//    label->setText("a : " + QString::number(this->a) + " , b " + QString::number(this->b)  + " , target " + QString::number(this->target_number));
-//    instructions_layout->addWidget(label);
-
     test_finished_label = new QLabel("Test fini ! Recommencez ou allez voir les résultats.", rect);
 
     test_finished_label->setFont(QFont("Roboto", 12, QFont::Bold, true));
-//    test_finished_label->setMargin(5);
-//    test_finished_label->setAlignment(Qt::AlignCenter);
+
     int label_width = 375;
     int label_height = 50;
-
-    // Get size of screen
-//    test_finished_label->setGeometry(screen_width - (test_finished_label->width() / 2) , screen_height - (test_finished_label->height() / 2), label_width, label_height);
-//    test_finished_label->move(rect->geometry().center());
-//                              , screen_height, 300, 70);
-//    test_finished_label->move((((rect->width()) / 2) - ((test_finished_label->width()) / 2)), (((rect->height()) / 2) - ((test_finished_label->height()) / 2)));
     test_finished_label->setGeometry(((rect->width()) / 2) - (label_width/ 2), ((rect->height() / 2) - (label_height / 2)), label_width, label_height);
 
-//    test_finished_label->setGeometry(screen_width, screen_height, test_finished_label->width(), test_finished_label->height());
     test_finished_label->setVisible(false);
 
-
-//    // Get size of test screen
-//    int screen_width = rect->size().width()/2;
-//    int screen_height = rect->size().height()/2;
-//    int click_me_button_width = rect->size().width() / 10 ;
-//    if (click_me_button_width < 50 ){
-//        click_me_button_width = 50 ;
-//    }
-//    int click_me_button_height = click_me_button_width;
-//    click_me_button->setGeometry(((rect->width()) / 2) - (click_me_button_width/ 2), ((rect->height() / 2) - (click_me_button_height / 2)), click_me_button_width, click_me_button_height);
-
-
-    beep_file = new QString("H:/UTBM/P20/GL40/TPs/TP2/Fitts-s-law/fitts_project/res/beep.wav");
-    beeeep_file = new QString("H:/UTBM/P20/GL40/TPs/TP2/Fitts-s-law/fitts_project/res/beeeep.wav");
+    beep_file = new QString("../res/beep.wav");
+    beeeep_file = new QString("../res/beeeep.wav");
     beep_sound = new QSound(*beep_file, this);
     beeeep_sound = new QSound(*beeeep_file, this);
-
 
     // back, reset and results
     bottom_buttons_layout = new QHBoxLayout;
@@ -201,25 +151,22 @@ void FittsTestWindow::changeButtonPosition()
     QString str="border-radius: ";
     str += QString::number(rand()%(button_height/2));
     str += "px; background-color: rgb(217,72,72)";
-//    str += QString::number(rand()%10);
-//    str += QString::number(rand()%10);
-//    str += QString::number(rand()%10);
-//    str += QString::number(rand()%10);
-//    str += QString::number(rand()%10);
-//    str += QString::number(rand()%10);
     str+=";";
     click_me_button->setStyleSheet(str);
-    //click_me_button->move(x, y);
+
+    int remaining_target_number = target_number - click_count;
+    click_me_button->setText(QString::number(remaining_target_number));
+    click_me_button->setFont(QFont("Roboto", click_me_button->height() * 1/2 , QFont::Bold, true));
 
     if (click_count == 0)
     {
         if (beeeep_sound != NULL )
             beeeep_sound->stop();
+
         this->test_timer->start();
         this->fitts_data->setA(this->a);
         this->fitts_data->setB(this->b);
         this->fitts_data->setTargetNumber(this->target_number);
-        click_me_button->setText("");
     }
 
     if (click_count >= target_number) {
@@ -231,13 +178,11 @@ void FittsTestWindow::changeButtonPosition()
 void FittsTestWindow::recordData()
 {
         QPoint current_pos = rect->mapFromGlobal(QCursor::pos());
-//        mouse_position_label->setText(QString::number(current_pos.x()) + " , " + QString::number(current_pos.y()));
 
         // compute distance between last recorded position and target center
         if(click_count >= 0)
         {
             double time_elapsed = test_timer->restart();
-            cout << "time elapsed : " << time_elapsed << endl ;
             this->fitts_data->sendData(last_recorded_pos, QPoint(click_me_button->x(), click_me_button->y()), click_me_button->width(), time_elapsed, click_count);
         }
         last_recorded_pos.setX(current_pos.x());
@@ -248,6 +193,7 @@ void FittsTestWindow::recordData()
 
 void FittsTestWindow::testFinished()
 {
+    //        cout << "Dans test finished" << endl;
     test_finished_label->setVisible(true);
     click_me_button->setVisible(false);
     results_button->setEnabled(true);
@@ -258,6 +204,7 @@ void FittsTestWindow::testFinished()
 
 void FittsTestWindow::resetTest()
 {
+//    cout << " dans resetTest " << endl;
     // set test params
     // first click doesn't count
     click_count = -1;
@@ -266,22 +213,18 @@ void FittsTestWindow::resetTest()
 
     results_button->setEnabled(false);
 
-    click_me_button->setText("6");
-//    click_me_button->setStyleSheet("background-color: red;");
-    click_me_button->setStyleSheet("background-color: rgb(217,72,72); color: white;");
 
     if( beep_sound != NULL){
         beep_sound->stop();
-//        beep_sound->play();
     }
 
     if (beeeep_sound != NULL ){
         beeeep_sound->stop();
-
     }
+
     // Get size of screen
-    int window_width = rect->size().width()/2;
-    int window_height = rect->size().height()/2;
+//    int window_width = rect->size().width()/2;
+//    int window_height = rect->size().height()/2;
     int click_me_button_width = rect->size().width() / 10 ;
     if (click_me_button_width < 50 ){
         click_me_button_width = 50 ;
@@ -292,21 +235,20 @@ void FittsTestWindow::resetTest()
     click_me_button->setVisible(true);
     click_me_button->setEnabled(false);
 
+    click_me_button->setText("6");
+    click_me_button->setFont(QFont("Roboto", click_me_button->width() * 1 / 3, QFont::Bold, true));
+    click_me_button->setStyleSheet("background-color: rgb(217,72,72); color: white;");
 
+    beep_sound->play();
 
-//    click_me_button->setVisible(false);
-
-
-//    countdown_label->setText("5");
-//    countdown_timer->stop();
     countdown_timer->start(1000);
-
     test_finished_label->setVisible(false);
 }
 
 
 void FittsTestWindow::updateCountdown()
-{
+{;
+//    cout << "Dans update coundtown" << endl;
     QString sec = click_me_button->text();
     int countdown = sec.toInt();
     countdown--;
@@ -317,46 +259,40 @@ void FittsTestWindow::updateCountdown()
     } else if (countdown == 0) {
         click_me_button->setEnabled(true);
         click_me_button->setText("Click me !");
+        click_me_button->setFont(QFont("Roboto", click_me_button->width() * 1 / 7, QFont::Bold, true));
+        countdown_timer->stop();
         beeeep_sound->play();
-//        click_me_button->setText("GO!");
     }
 }
 
 
 void FittsTestWindow::startCountdown()
 {
-
+//    cout << "Dans start coundtown" << endl;
     click_me_button->setText("6");
+    click_me_button->setFont(QFont("Roboto", click_me_button->width() * 1 / 3, QFont::Bold, true));
     countdown_timer->start(1000);
+    beep_sound->play();
 }
 
 void FittsTestWindow::stopCountdown()
 {
-
-
+//    cout << "Dans stop coundtown" << endl;
     countdown_timer->stop();
 }
 
 
 void FittsTestWindow::goBack()
 {
-    this->resetTest();
-//    if( beep_sound != NULL){
-//        beep_sound->stop();
-//    }
-
-//    if (beeeep_sound != NULL ){
-//        beeeep_sound->stop();
-//    }
+//    this->resetTest();
     countdown_timer->stop();
-//    click_me_button->setText("6");
-
     emit changeInterface("home_page");
 }
 
 
 void FittsTestWindow::goToResults()
 {
+
     if( beep_sound != NULL){
         beep_sound->stop();
     }
@@ -365,7 +301,6 @@ void FittsTestWindow::goToResults()
         beeeep_sound->stop();
     }
     countdown_timer->stop();
-//        click_me_button->setText("6");
     emit changeInterface("results_page");
     static_cast<MainWindow*>(this->parent())->getResultsPage().displayResults();
 
@@ -374,43 +309,31 @@ void FittsTestWindow::goToResults()
 void FittsTestWindow::setA(double a)
 {
     this->a = a;
-    QTextStream(stdout) << "a" << endl;
-
-//    label->setText("a : " + QString::number(this->a) + " , b " + QString::number(this->b)  + " , target " + QString::number(this->target_number)   + " , target min " + QString::number(this->target_size_mini)  + " , target max " + QString::number(this->target_size_max));
-
-
+//    QTextStream(stdout) << "a" << endl;
 }
 
 void FittsTestWindow::setB(double b)
 {
     this->b = b;
-        QTextStream(stdout) << "b" << endl;
-//        label->setText("a : " + QString::number(this->a) + " , b " + QString::number(this->b)  + " , target " + QString::number(this->target_number)   + " , target min " + QString::number(this->target_size_mini)  + " , target max " + QString::number(this->target_size_max));
-
+//        QTextStream(stdout) << "b" << endl;
 }
 
 void FittsTestWindow::setTargetNumber(int n)
 {
     this->target_number = n;
-        QTextStream(stdout) << "t number" << endl;
-//        label->setText("a : " + QString::number(this->a) + " , b " + QString::number(this->b)  + " , target " + QString::number(this->target_number)   + " , target min " + QString::number(this->target_size_mini)  + " , target max " + QString::number(this->target_size_max));
-
+//        QTextStream(stdout) << "t number" << endl;
 }
 
 void FittsTestWindow::setTargetSizeMini(int m)
 {
     this->target_size_mini = m;
-        QTextStream(stdout) << "t min" << endl;
-//        label->setText("a : " + QString::number(this->a) + " , b " + QString::number(this->b)  + " , target " + QString::number(this->target_number)   + " , target min " + QString::number(this->target_size_mini)  + " , target max " + QString::number(this->target_size_max));
-
+//        QTextStream(stdout) << "t min" << endl;
 }
 
 void FittsTestWindow::setTargetSizeMax(int m)
 {
     this->target_size_max = m;
-        QTextStream(stdout) << "t max" << endl;
-//        label->setText("a : " + QString::number(this->a) + " , b " + QString::number(this->b)  + " , target " + QString::number(this->target_number)   + " , target min " + QString::number(this->target_size_mini)  + " , target max " + QString::number(this->target_size_max));
-
+//        QTextStream(stdout) << "t max" << endl;
 }
 
 

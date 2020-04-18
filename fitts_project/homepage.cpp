@@ -4,8 +4,6 @@
 HomePage::HomePage(QWidget *parent, QString name):
     QWidget(parent)
 {
-
-
     this->setObjectName(name);
 
     connect(this, SIGNAL(changeInterface(QString)), this->parent(),SLOT(changeOnglet(QString)));
@@ -17,8 +15,9 @@ HomePage::HomePage(QWidget *parent, QString name):
     int window_width = parent->width();
     int window_height = parent->height();
 
-    cout << "window_width : " << window_width <<endl;
-    cout << "window_height: " << window_height<<endl;
+//    cout << "window_width : " << window_width <<endl;
+//    cout << "window_height: " << window_height<<endl;
+
     // -------------------------------------
     // top layout, contains the title of the main window
     // -------------------------------------
@@ -36,8 +35,6 @@ HomePage::HomePage(QWidget *parent, QString name):
     fitts_formula_box = new QGroupBox(tr("Loi de Fitts"), this);
     fitts_formula_layout = new QVBoxLayout;
 
-//    fitts_box_layout = new QHBoxLayout;
-
     fitts_formula_label = new QLabel("Formule utilisée : ");
 
     fitts_formula_layout->addWidget(fitts_formula_label);
@@ -45,8 +42,6 @@ HomePage::HomePage(QWidget *parent, QString name):
     fitts_formula_layout->addWidget(fitts_formula);
     fitts_formula_layout->setAlignment(fitts_formula, Qt::AlignHCenter);
     fitts_formula_layout->insertSpacing(2, 15);
-
-//    fitts_box_layout->addLayout(fitts_formula_layout);
 
     fitts_form = new QFormLayout;
     fitts_form->setVerticalSpacing(15);
@@ -72,26 +67,8 @@ HomePage::HomePage(QWidget *parent, QString name):
 
     fitts_formula_layout->addLayout(fitts_form);
 
-
-
-
     fitts_formula_box->setLayout(fitts_formula_layout);
     fitts_formula_box->setMaximumSize(QSize((int) window_width , (int) window_height * 0.33));
-
-//    // a and b choice for Fitts's formula
-//    a_b_choice_layout = new QVBoxLayout;
-
-//    a_b_choice_label = new QLabel("Choix de a et b : ");
-//    a_b_choice_layout->addWidget(a_b_choice_label);
-
-//    a_b_form_layout = new QFormLayout;
-//    a_b_form_layout->addRow("a", a_spinbox);
-
-
-//    a_b_choice_layout->addLayout(a_b_form_layout);
-//    fitts_box_layout->addLayout(a_b_choice_layout);
-
-//    fitts_formula_box->setLayout(fitts_box_layout);
 
 
     // -------------------------------------
@@ -134,8 +111,6 @@ HomePage::HomePage(QWidget *parent, QString name):
     connect(quit_button, SIGNAL(clicked()), qApp, SLOT(quit()));
     buttons_layout->addWidget(quit_button);
 
-
-//    buttons_layout->insertSpacing(1, window_width / 2);
     buttons_layout->insertSpacing(1, screen_width / 2);
 
     start_button= new QPushButton("Démarrer le test");
@@ -147,9 +122,7 @@ HomePage::HomePage(QWidget *parent, QString name):
 
     vertical_layout->addLayout(title_layout);
     vertical_layout->insertSpacing(1, screen_height * 1/7);
-//    vertical_layout->insertSpacing(1, this->height() * 1/4);
-//    vertical_layout->addWidget(fitts_formula_box);
-//    vertical_layout->addWidget(configuration_box);
+
     params_layout = new QVBoxLayout;
     params_layout->addWidget(fitts_formula_box);
     params_layout->insertSpacing(1, screen_height * 1/7);
@@ -158,37 +131,24 @@ HomePage::HomePage(QWidget *parent, QString name):
     vertical_layout->addLayout(params_layout);
 
     vertical_layout->insertSpacing(3, screen_height * 1/7);
-//    vertical_layout->insertSpacing(3, this->height() * 1/4);
+
     vertical_layout->addLayout(buttons_layout);
 
-/*    horizontal_layout = new QHBoxLayout;
-    horizontal_layout->insertSpacing(0, window_width * 0.25 );
-//        horizontal_layout->insertSpacing(0, screen_height / 4 );
-    horizontal_layout->addLayout(vertical_layout);
-//    horizontal_layout->insertSpacing(2, screen_height / 4 );
-//        horizontal_layout->insertSpacing(2, window_height * 0.33 );
-//    vertical_layout->setStrechFactor(title_layout,1);
-//    vertical_layout->setStrechFactor(fitts_formula_box,2);
-//    vertical_layout->setStrechFactor(configuration,1);
-*/
-
-//    vertical_layout->setStyleSheet("background: rgb(170,189,206);");
     this->setLayout(vertical_layout);
-//        this->setLayout(horizontal_layout);
 }
 
 
 void HomePage::setA(double a)
 {
     static_cast<MainWindow*>(this->parent())->getFittsTestWindow().setA(a);
-        static_cast<MainWindow*>(this->parent())->getResultsPage().setA(a);
+    static_cast<MainWindow*>(this->parent())->getResultsPage().setA(a);
 }
 
 
 void HomePage::setB(double b)
 {
     static_cast<MainWindow*>(this->parent())->getFittsTestWindow().setB(b);
-            static_cast<MainWindow*>(this->parent())->getResultsPage().setB(b);
+    static_cast<MainWindow*>(this->parent())->getResultsPage().setB(b);
 }
 
 
@@ -210,7 +170,6 @@ void HomePage::setTargetSizeMax(int m)
 }
 
 
-
 void HomePage::launch_test()
 {
     emit changeInterface("fitts_page");
@@ -219,6 +178,7 @@ void HomePage::launch_test()
                 this->target_number_spinbox->value(),
                 this->target_mini_size_spinbox->value(),
                 this->target_max_size_spinbox->value());
+    static_cast<MainWindow*>(this->parent())->getFittsTestWindow().resetTest();
 }
 
 

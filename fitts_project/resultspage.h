@@ -5,7 +5,7 @@
 #include <QtCharts>
 #include "FittsData.h"
 #include "homepage.h"
-//#include <QtCharts/QLineSeries>
+
 using namespace QtCharts;
 
 class ResultsPage : public QWidget
@@ -23,6 +23,7 @@ public slots:
     void setB(double b);
     void computeFitts();
     void setTestParams(int number, int min, int max);
+
 signals:
     void changeInterface(QString name);
 
@@ -52,9 +53,9 @@ private:
     // Fitts's law formula box
     QGroupBox *fitts_formula_box;
     QHBoxLayout *fitts_box_layout;
+    QLabel *fitts_formula_label;
 
     QHBoxLayout *fitts_formula_layout;
-    QLabel *fitts_formula_label;
     QLabel *fitts_formula;
 
     QVBoxLayout *a_b_choice_layout;

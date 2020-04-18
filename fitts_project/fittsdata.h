@@ -16,7 +16,6 @@ public :
 
 private:
     int target_number;
-//    std::vector<double> dataToPublish;
     typedef std::vector< std::tuple<int, int, double, double> > data_to_publish_tuple;
     data_to_publish_tuple dataToPublish;
 

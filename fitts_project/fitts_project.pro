@@ -29,8 +29,7 @@ HEADERS += \
     fittstestwindow.h \
     homepage.h \
     mainwindow.h \
-    resultspage.h \
-    testwindow.h
+    resultspage.h
 
 FORMS += \
     mainwindow.ui

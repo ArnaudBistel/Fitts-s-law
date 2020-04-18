@@ -14,8 +14,7 @@ class FittsTestWindow : public QWidget
 public:
     FittsTestWindow(QWidget *parent,QString name);
     void startCountdown();
-        void stopCountdown();
-//    FittsTestWindow(const FittsTestWindow& fitts);
+    void stopCountdown();
 
 public slots:
     void updateCountdown();
@@ -24,7 +23,6 @@ public slots:
     void goToResults();
     void resetTest();
     void recordData();
-//    void initializeTest();
 
 signals:
     void changeInterface(QString name);
@@ -42,13 +40,7 @@ private:
     QVBoxLayout *instructions_layout;
     QHBoxLayout *countdown_layout;
     QLabel *instructions_label;
-//    QLabel *countdown_text_label;
-//    QLabel *countdown_label;
     QTimer *countdown_timer;
-
-    // test
-//    QLabel *mouse_position_label;
-//    QLabel *label;
 
     // test view
     int x_coord;
@@ -68,7 +60,6 @@ private:
     // test parameters
     int click_count;
 
-private:
     int target_number;
     double a;
     double b;
