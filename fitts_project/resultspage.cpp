@@ -2,6 +2,9 @@
 #include "mainwindow.h"
 #include <iostream>
 
+// /////////////////////////////////////////
+// TODO add moyenne table des cibles, distance moyenne, temps moyen etc...
+// /////////////////////////////////////////
 ResultsPage::ResultsPage(QWidget *parent, QString name):
     QWidget(parent)
 {
@@ -33,7 +36,7 @@ ResultsPage::ResultsPage(QWidget *parent, QString name):
     a_spinbox->setMinimum(0);
     a_spinbox->setSingleStep(0.05);
     connect(a_spinbox, SIGNAL(valueChanged(double)), this, SLOT(setA(double)));
-        connect(a_spinbox, SIGNAL(valueChanged(double)), this, SLOT(computeFitts()));
+    connect(a_spinbox, SIGNAL(valueChanged(double)), this, SLOT(computeFitts()));
     fitts_form->addRow("Choix de a  \t\t", a_spinbox);
 
     b_spinbox = new QDoubleSpinBox;
@@ -50,8 +53,32 @@ ResultsPage::ResultsPage(QWidget *parent, QString name):
 
     fitts_formula_layout->addLayout(fitts_form);
 
-    fitts_formula_label = new QLabel("T = a + b.log(D/W + 1)");
-    fitts_formula_layout->addWidget(fitts_formula_label);
+//    fitts_formula_label = new QLabel("T = a + b.log(D/W + 1)");
+//    fitts_formula_layout->addWidget(fitts_formula_label);
+
+    data_form = new QFormLayout;
+
+    average_label = new QLabel();
+
+    data_form->addRow("Moyenne pour cliquer\t", average_label);
+
+    ecart_type_label = new QLabel();
+
+    data_form->addRow("Ecart-type\t", ecart_type_label);
+
+    erreur_type_label = new QLabel();
+
+    data_form->addRow("Erreur type\t", erreur_type_label);
+
+//    configuration_form->setFieldGrowthPolicy(QFormLayout::FieldsStayAtSizeHint);
+//    configuration_form->setRowWrapPolicy(QFormLayout::DontWrapRows);
+//    configuration_form->setFormAlignment(Qt::AlignHCenter | Qt::AlignTop);
+//    configuration_form->setLabelAlignment(Qt::AlignLeft);
+
+    fitts_formula_layout->addLayout(data_form);
+
+
+
 
     configuration_form = new QFormLayout;
 
@@ -123,12 +150,25 @@ void ResultsPage::setTestParams(int number, int min, int max)
 }
 
 
+void ResultsPage::displayData()
+{
+    vector<double> data = static_cast<MainWindow*>(this->parent())->getFittsTestWindow().getFittsData().getStatData();
+    this->average_label->setText(QString::number(data.at(0), 'f', 3)  + " ms");
+    this->ecart_type_label->setText(QString::number(data.at(1), 'f', 3) + " ms");
+    this->erreur_type_label->setText(QString::number(data.at(2), 'f', 3) + " ms");
+}
+
+
+
 void ResultsPage::displayResults()
 {
     dataToPublish = static_cast<MainWindow*>(this->parent())->getFittsTestWindow().getFittsData().getData();
 
     int j = 1;
     QString results;
+
+    results.append(" a : " + QString::number(this->a_spinbox->value()) + "\n");
+                results.append(" b : " + QString::number(this->b_spinbox->value()) + "\n");
     for (data_to_publish_tuple::const_iterator i = dataToPublish.begin(); i != dataToPublish.end(); ++i)
     {
 //        results.append(QString::number(j));
@@ -138,15 +178,16 @@ void ResultsPage::displayResults()
 //        results.append(QString::number(get<1>(*i)));
 //        results.append("\n time to click : ");
 //        results.append(QString::number(get<2>(*i)));
-//        results.append("\n Fitts time : ");
-//        results.append(QString::number(get<3>(*i)));
-//        results.append("\n\n");
+        results.append("\n Fitts time : ");
+        results.append(QString::number(get<3>(*i)));
+        results.append("");
 
         j++;
         // returns vector of tuple < distance to target, target size, time to click on target, theorical time to click on target >
     }
+            results.append(" ------------------------------------------- ");
 //    std::cout << "coucoué" << endl ;
-//    std::cout << results.toStdString() << endl ;
+    std::cout << results.toStdString() << endl ;
 
     chart = new QChart();
     QLineSeries *fitts_series = new QLineSeries();
@@ -159,6 +200,7 @@ void ResultsPage::displayResults()
     for (data_to_publish_tuple::const_iterator i = dataToPublish.begin(); i != dataToPublish.end(); ++i)
     {
         *fitts_series << QPointF(j, get<3>(*i));
+//        *test_series << QPointF(j, get<2>(*i));
         test_series->append(j, get<2>(*i));
         j++;
 
@@ -176,21 +218,53 @@ void ResultsPage::displayResults()
     chart->setTitle("Courbes théorique et empirique du test de Fitts.");
 
     QValueAxis *axisX = new QValueAxis;
-    axisX->setRange(1, j-1);
-    axisX->setTickCount(j-1);
+//    axisX->setRange(1, j-1);
+    axisX->setRange(0, j-1);
+    axisX->setTickCount(j);
+//    axisX->setTickCount(j-1);
     axisX->setLabelFormat("%i");
     axisX->setTitleText("Numéro de cible");
     chart->addAxis(axisX, Qt::AlignBottom);
+
+    j = 1;
+    QCategoryAxis *axisX_distance = new QCategoryAxis;
+    axisX_distance->setTitleText("Distance jusqu'à la cible en pixel");
+    QCategoryAxis *axisX_size = new QCategoryAxis;
+    axisX_size->setTitleText("Taille de la cible en pixel");
+
+    for (data_to_publish_tuple::const_iterator i = dataToPublish.begin(); i != dataToPublish.end(); ++i)
+    {
+        axisX_distance->append(QString::number(get<0>(*i)),j);
+        axisX_size->append(QString::number(get<1>(*i)),j);
+        j++;
+    }
+
+//    axisY3->append("Low", 1);
+//    axisY3->append("Medium", 2);
+//    axisY3->append("High", 3);
+
+    axisX_size->setRange(0, j-1);
+    axisX_size->setTickCount(j);
+    axisX_distance->setTickCount(j);
+    axisX_distance->setRange(0, j-1);
+
+    chart->addAxis(axisX_distance, Qt::AlignBottom);
+    chart->addAxis(axisX_size, Qt::AlignBottom);
 
     QValueAxis *axisY = new QValueAxis;
     axisY->setRange(0.0, max + 0.15);
     axisY->setTickCount(j-1);
     axisY->setLabelFormat("%.4f");
-    axisY->setTitleText("Temps pour cliquer sur la cible");
+    axisY->setTitleText("Temps pour cliquer sur la cible en secondes");
     chart->addAxis(axisY, Qt::AlignLeft);
 
     fitts_series->attachAxis(axisY);
     test_series->attachAxis(axisY);
+
+    fitts_series->attachAxis(axisX_distance);
+    fitts_series->attachAxis(axisX_size);
+    test_series->attachAxis(axisX_distance);
+    test_series->attachAxis(axisX_size);
 
     chartView->setRenderHint(QPainter::Antialiasing);
     chartView->setChart(chart);
@@ -203,17 +277,23 @@ void ResultsPage::displayResults()
 void ResultsPage::setA(double a)
 {
     static_cast<MainWindow*>(this->parent())->getFittsTestWindow().setA(a);
-    static_cast<MainWindow*>(this->parent())->getFittsTestWindow().getFittsData().setA(this->a);
-    this->a_spinbox->setValue(a);
+    static_cast<MainWindow*>(this->parent())->getFittsTestWindow().getFittsData().setA(a);
+    if (this->a_spinbox->value() != a )
+        this->a_spinbox->setValue(a);
+        cout << "dans setA" <<endl;
     this->a = a;
 }
 
 
 void ResultsPage::setB(double b)
 {
+    cout << "dans set b de resultspage  : " << b <<endl;
     static_cast<MainWindow*>(this->parent())->getFittsTestWindow().setB(b);
-    static_cast<MainWindow*>(this->parent())->getFittsTestWindow().getFittsData().setB(this->b);
-    this->b_spinbox->setValue(b);
+    static_cast<MainWindow*>(this->parent())->getFittsTestWindow().getFittsData().setB(b);
+
+    if (this->b_spinbox->value() != b)
+        this->b_spinbox->setValue(b);
+        cout<< "dans setB " << endl;
     this->b = b;
 }
 

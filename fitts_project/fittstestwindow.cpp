@@ -198,7 +198,7 @@ void FittsTestWindow::testFinished()
     click_me_button->setVisible(false);
     results_button->setEnabled(true);
     this->fitts_data->computeTestResults();
-    this->fitts_data->getData();
+//    this->fitts_data->getData();
 }
 
 
@@ -303,7 +303,7 @@ void FittsTestWindow::goToResults()
     countdown_timer->stop();
     emit changeInterface("results_page");
     static_cast<MainWindow*>(this->parent())->getResultsPage().displayResults();
-
+    static_cast<MainWindow*>(this->parent())->getResultsPage().displayData();
 }
 
 void FittsTestWindow::setA(double a)

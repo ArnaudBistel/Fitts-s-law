@@ -5,6 +5,7 @@
 #include <tuple>
 #include <bits/stdc++.h>
 #include <QtWidgets>
+//#include <stdlib.h>
 using namespace std;
 
 class FittsData
@@ -23,13 +24,19 @@ private:
     double b;
     typedef std::vector< std::tuple<int, int, double, int> > data_to_compute_tuple;
     data_to_compute_tuple dataToCompute;
+//    double average_time;
+
+    // moyenne de temps pour cliquer, ecart-type, erreur type
+    std::vector<double> stat_data;
 
     void setA(double a);
     void setB(double b);
     void setTargetNumber(int n);
 
+    vector<double> getStatData();
     void computeTestResults();
     double fittsEquation(int distanceToTarget, int targetSize);
+    double computeStatData();
     void resetData();
 
     double computeDistance(QPoint init_position, QPoint target_position);

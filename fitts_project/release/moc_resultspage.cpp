@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_ResultsPage_t {
-    QByteArrayData data[16];
-    char stringdata0[122];
+    QByteArrayData data[17];
+    char stringdata0[134];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -47,13 +47,14 @@ QT_MOC_LITERAL(11, 80, 12), // "computeFitts"
 QT_MOC_LITERAL(12, 93, 13), // "setTestParams"
 QT_MOC_LITERAL(13, 107, 6), // "number"
 QT_MOC_LITERAL(14, 114, 3), // "min"
-QT_MOC_LITERAL(15, 118, 3) // "max"
+QT_MOC_LITERAL(15, 118, 3), // "max"
+QT_MOC_LITERAL(16, 122, 11) // "displayData"
 
     },
     "ResultsPage\0changeInterface\0\0name\0"
     "retryTest\0goHome\0displayResults\0setA\0"
     "a\0setB\0b\0computeFitts\0setTestParams\0"
-    "number\0min\0max"
+    "number\0min\0max\0displayData"
 };
 #undef QT_MOC_LITERAL
 
@@ -63,7 +64,7 @@ static const uint qt_meta_data_ResultsPage[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -71,16 +72,17 @@ static const uint qt_meta_data_ResultsPage[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   54,    2, 0x06 /* Public */,
+       1,    1,   59,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       4,    0,   57,    2, 0x0a /* Public */,
-       5,    0,   58,    2, 0x0a /* Public */,
-       6,    0,   59,    2, 0x0a /* Public */,
-       7,    1,   60,    2, 0x0a /* Public */,
-       9,    1,   63,    2, 0x0a /* Public */,
-      11,    0,   66,    2, 0x0a /* Public */,
-      12,    3,   67,    2, 0x0a /* Public */,
+       4,    0,   62,    2, 0x0a /* Public */,
+       5,    0,   63,    2, 0x0a /* Public */,
+       6,    0,   64,    2, 0x0a /* Public */,
+       7,    1,   65,    2, 0x0a /* Public */,
+       9,    1,   68,    2, 0x0a /* Public */,
+      11,    0,   71,    2, 0x0a /* Public */,
+      12,    3,   72,    2, 0x0a /* Public */,
+      16,    0,   79,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,
@@ -93,6 +95,7 @@ static const uint qt_meta_data_ResultsPage[] = {
     QMetaType::Void, QMetaType::Double,   10,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int,   13,   14,   15,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -111,6 +114,7 @@ void ResultsPage::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 5: _t->setB((*reinterpret_cast< double(*)>(_a[1]))); break;
         case 6: _t->computeFitts(); break;
         case 7: _t->setTestParams((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
+        case 8: _t->displayData(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -154,13 +158,13 @@ int ResultsPage::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 9;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 8)
+        if (_id < 9)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 8;
+        _id -= 9;
     }
     return _id;
 }

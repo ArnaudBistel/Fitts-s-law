@@ -12,7 +12,7 @@ MainWindow::MainWindow()
     this->addWidget(static_cast<QWidget*>(results_page));
 
     this->setCurrentWidget(home_page);
-    setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
+    setWindowFlags(Qt::MSWindowsFixedSizeDialogHint);
 }
 
 

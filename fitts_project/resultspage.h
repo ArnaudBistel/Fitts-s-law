@@ -23,6 +23,7 @@ public slots:
     void setB(double b);
     void computeFitts();
     void setTestParams(int number, int min, int max);
+    void displayData();
 
 signals:
     void changeInterface(QString name);
@@ -44,11 +45,20 @@ private:
     QPushButton *retry_test_button;
 
     // Configuration box
-    QGroupBox *configuration_box;
+//    QGroupBox *configuration_box;
     QFormLayout *configuration_form;
     QLabel *target_number_label;
     QLabel *target_mini_size_label;
     QLabel *target_max_size_label;
+
+    // Data form
+//    QGroupBox *configuration_box;
+    QFormLayout *data_form;
+    QLabel *average_label;
+    QLabel *ecart_type_label;
+    QLabel *erreur_type_label;
+
+
 
     // Fitts's law formula box
     QGroupBox *fitts_formula_box;
