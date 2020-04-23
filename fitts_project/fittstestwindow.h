@@ -6,6 +6,7 @@
 #include "homepage.h"
 #include "FittsData.h"
 #include "resultspage.h"
+#include <QFontDatabase>
 
 class FittsTestWindow : public QWidget
 {
@@ -13,53 +14,69 @@ class FittsTestWindow : public QWidget
 
 public:
     FittsTestWindow(QWidget *parent,QString name);
+
+
+    // ------------- SLOTS -------------
+public slots:
+    void changeButtonPosition();
+    void recordData();
+
     void startCountdown();
+    void updateCountdown();
     void stopCountdown();
 
-public slots:
-    void updateCountdown();
-    void changeButtonPosition();
     void goBack();
-    void goToResults();
     void resetTest();
-    void recordData();
+    void goToResults();
 
 signals:
     void changeInterface(QString name);
 
 private:
-    void testFinished();
-    void setA(double a);
-    void setB(double b);
-    void setTargetNumber(int n);
-    void setTargetSizeMini(int m);
-    void setTargetSizeMax(int m);
 
+    // ------------- ATTRIBUTES -------------
 
-    // instructions
+    // ----------------------------------
+    // Instructions
+    // ----------------------------------
     QVBoxLayout *instructions_layout;
-    QHBoxLayout *countdown_layout;
+//    QHBoxLayout *countdown_layout;
     QLabel *instructions_label;
-    QTimer *countdown_timer;
 
-    // test view
-    int x_coord;
-    int y_coord;
-    QPushButton *click_me_button;
+    // ----------------------------------
+    // Fenêtre de test
+    // ----------------------------------
     QFrame *rect;
-    QVBoxLayout *main_layout;
-    QLabel *test_finished_label;
-    QElapsedTimer *test_timer;
 
-    // back reset and results
+    // ----------------------------------
+    // Cible
+    // ----------------------------------
+    QPushButton *click_me_button;
+    QTimer *countdown_timer;
+    QLabel *test_finished_label;
+    QString *beep_file;
+    QString *beeeep_file;
+    QSound *beep_sound;
+    QSound *beeeep_sound;
+
+    // ----------------------------------
+    // back, reset and results
+    // ----------------------------------
     QHBoxLayout *bottom_buttons_layout;
     QPushButton *back_to_home_button;
     QPushButton *results_button;
     QPushButton *reset_button;
 
-    // test parameters
-    int click_count;
+    // -------------------------------------
+    // vertical layout that contains all the widgets in the HomePage
+    // -------------------------------------
+    QVBoxLayout *main_layout;
 
+    // ----------------------------------
+    // Paramètres de test
+    // ----------------------------------
+    QElapsedTimer *test_timer;
+    int click_count;
     int target_number;
     double a;
     double b;
@@ -67,12 +84,26 @@ private:
     int target_size_max;
     FittsData *fitts_data;
     QPoint last_recorded_pos;
-    FittsData& getFittsData();
-    QString *beep_file;
-    QString *beeeep_file;
-    QSound *beep_sound;
-    QSound *beeeep_sound;
 
+
+    // ------------- METHODES -------------
+    void testFinished();
+    void initTarget();
+
+
+    // ------------- SETTERS -------------
+    void setA(double a);
+    void setB(double b);
+    void setTargetNumber(int n);
+    void setTargetSizeMini(int m);
+    void setTargetSizeMax(int m);
+
+
+    // ------------- GETTERS -------------
+    FittsData& getFittsData();
+
+
+    // ------------- FRIENDS -------------
     friend class MainWindow;
     friend class HomePage;
     friend class ResultsPage;

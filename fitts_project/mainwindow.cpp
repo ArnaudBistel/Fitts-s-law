@@ -1,5 +1,8 @@
 #include "mainwindow.h"
 
+
+// Classe qui hérite de QStackedWidget et permet donc de transiter entre
+// les différentes pages de l'application
 MainWindow::MainWindow()
 {
     home_page = new HomePage(this, "home_page");
@@ -16,11 +19,16 @@ MainWindow::MainWindow()
 }
 
 
+
+// ----------------------------------
+// ------------- GETTERS -------------
+// ----------------------------------
+
+
 FittsTestWindow& MainWindow::getFittsTestWindow()
 {
     return *fitts_page;
 }
-
 
 
 ResultsPage& MainWindow::getResultsPage()
@@ -33,7 +41,7 @@ MainWindow::~MainWindow()
 {}
 
 
-// slot pour changer d'onglet
+//Controlleur : slot pour changer de page
 void MainWindow::changeOnglet(QString name)
 {
     if((name == home_page->objectName()) && home_page)

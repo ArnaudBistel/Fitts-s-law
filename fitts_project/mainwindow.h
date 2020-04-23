@@ -9,6 +9,9 @@
 #include <QStyle>
 #include <QDesktopWidget>
 
+
+// Classe qui hérite de QStackedWidget et permet donc de transiter entre
+// les différentes pages de l'application
 class MainWindow : public QStackedWidget
 {
     Q_OBJECT
@@ -16,6 +19,8 @@ class MainWindow : public QStackedWidget
 public:
     MainWindow();
     ~MainWindow();
+
+    // ------------- GETTERS -------------
     FittsTestWindow& getFittsTestWindow();
     ResultsPage& getResultsPage();
 
@@ -23,6 +28,7 @@ public slots:
     void changeOnglet(QString name);
 
 private:
+    // ------------- ATTRIBUTES -------------
     HomePage *home_page;
     FittsTestWindow *fitts_page;
     ResultsPage *results_page;

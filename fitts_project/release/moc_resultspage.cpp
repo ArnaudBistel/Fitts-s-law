@@ -36,25 +36,25 @@ QT_MOC_LITERAL(0, 0, 11), // "ResultsPage"
 QT_MOC_LITERAL(1, 12, 15), // "changeInterface"
 QT_MOC_LITERAL(2, 28, 0), // ""
 QT_MOC_LITERAL(3, 29, 4), // "name"
-QT_MOC_LITERAL(4, 34, 9), // "retryTest"
-QT_MOC_LITERAL(5, 44, 6), // "goHome"
-QT_MOC_LITERAL(6, 51, 14), // "displayResults"
-QT_MOC_LITERAL(7, 66, 4), // "setA"
-QT_MOC_LITERAL(8, 71, 1), // "a"
-QT_MOC_LITERAL(9, 73, 4), // "setB"
-QT_MOC_LITERAL(10, 78, 1), // "b"
-QT_MOC_LITERAL(11, 80, 12), // "computeFitts"
-QT_MOC_LITERAL(12, 93, 13), // "setTestParams"
-QT_MOC_LITERAL(13, 107, 6), // "number"
-QT_MOC_LITERAL(14, 114, 3), // "min"
-QT_MOC_LITERAL(15, 118, 3), // "max"
-QT_MOC_LITERAL(16, 122, 11) // "displayData"
+QT_MOC_LITERAL(4, 34, 14), // "displayResults"
+QT_MOC_LITERAL(5, 49, 11), // "displayData"
+QT_MOC_LITERAL(6, 61, 12), // "computeFitts"
+QT_MOC_LITERAL(7, 74, 6), // "goHome"
+QT_MOC_LITERAL(8, 81, 9), // "retryTest"
+QT_MOC_LITERAL(9, 91, 13), // "setTestParams"
+QT_MOC_LITERAL(10, 105, 6), // "number"
+QT_MOC_LITERAL(11, 112, 3), // "min"
+QT_MOC_LITERAL(12, 116, 3), // "max"
+QT_MOC_LITERAL(13, 120, 4), // "setA"
+QT_MOC_LITERAL(14, 125, 1), // "a"
+QT_MOC_LITERAL(15, 127, 4), // "setB"
+QT_MOC_LITERAL(16, 132, 1) // "b"
 
     },
     "ResultsPage\0changeInterface\0\0name\0"
-    "retryTest\0goHome\0displayResults\0setA\0"
-    "a\0setB\0b\0computeFitts\0setTestParams\0"
-    "number\0min\0max\0displayData"
+    "displayResults\0displayData\0computeFitts\0"
+    "goHome\0retryTest\0setTestParams\0number\0"
+    "min\0max\0setA\0a\0setB\0b"
 };
 #undef QT_MOC_LITERAL
 
@@ -78,11 +78,11 @@ static const uint qt_meta_data_ResultsPage[] = {
        4,    0,   62,    2, 0x0a /* Public */,
        5,    0,   63,    2, 0x0a /* Public */,
        6,    0,   64,    2, 0x0a /* Public */,
-       7,    1,   65,    2, 0x0a /* Public */,
-       9,    1,   68,    2, 0x0a /* Public */,
-      11,    0,   71,    2, 0x0a /* Public */,
-      12,    3,   72,    2, 0x0a /* Public */,
-      16,    0,   79,    2, 0x0a /* Public */,
+       7,    0,   65,    2, 0x0a /* Public */,
+       8,    0,   66,    2, 0x0a /* Public */,
+       9,    3,   67,    2, 0x0a /* Public */,
+      13,    1,   74,    2, 0x0a /* Public */,
+      15,    1,   77,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,
@@ -91,11 +91,11 @@ static const uint qt_meta_data_ResultsPage[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Double,    8,
-    QMetaType::Void, QMetaType::Double,   10,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int,   13,   14,   15,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int,   10,   11,   12,
+    QMetaType::Void, QMetaType::Double,   14,
+    QMetaType::Void, QMetaType::Double,   16,
 
        0        // eod
 };
@@ -107,14 +107,14 @@ void ResultsPage::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->changeInterface((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 1: _t->retryTest(); break;
-        case 2: _t->goHome(); break;
-        case 3: _t->displayResults(); break;
-        case 4: _t->setA((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 5: _t->setB((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 6: _t->computeFitts(); break;
-        case 7: _t->setTestParams((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
-        case 8: _t->displayData(); break;
+        case 1: _t->displayResults(); break;
+        case 2: _t->displayData(); break;
+        case 3: _t->computeFitts(); break;
+        case 4: _t->goHome(); break;
+        case 5: _t->retryTest(); break;
+        case 6: _t->setTestParams((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
+        case 7: _t->setA((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 8: _t->setB((*reinterpret_cast< double(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
